@@ -375,78 +375,29 @@ footer a{color:#fff;text-decoration:none}
   .actions,.status,.lang,.quick-actions{display:none!important}
 }
 
-@media(max-width:760px){
-  .catalog-link-row,
-  .details-section{
-  }
-}
 
-
-/* Finale einheitliche Ausrichtung aller Formularbereiche */
-#requestForm{
-  width:100%;
-  margin:0;
-  padding:0;
-}
-#requestForm > .section{
-  width:100%;
-  margin-left:0 !important;
-  margin-right:0 !important;
-  padding-left:0 !important;
-  padding-right:0 !important;
-}
-#requestForm .catalog-link-row{
-  width:100%;
-  margin:24px 0 0 !important;
-  padding:0 !important;
-}
-#requestForm .details-section{
-  width:100%;
-  margin:34px 0 0 !important;
-  padding:0 !important;
-}
-#requestForm .section-title{
-  width:100%;
-  margin-left:0 !important;
-  margin-right:0 !important;
-}
-#requestForm .grid{
-  width:100%;
-  margin-left:0 !important;
-  margin-right:0 !important;
-}
-#requestForm .full{
-  width:100%;
-  margin-left:0 !important;
-  margin-right:0 !important;
-}
-#requestForm .upload{
-  width:100%;
-  margin-left:0 !important;
-  margin-right:0 !important;
-}
+/* Saubere, einheitliche Formularausrichtung */
+#requestForm{width:100%;margin:0;padding:0}
+#requestForm .section{width:100%;margin:30px 0 0;padding:0}
+#requestForm .section-title,
+#requestForm .grid,
+#requestForm .full,
+#requestForm .catalog-box,
+#requestForm .upload{width:100%;margin-left:0;margin-right:0}
+#requestForm .catalog-link-row{margin:24px 0 0;padding:0}
+#requestForm .details-section{margin:34px 0 0;padding:0}
+#requestForm .details-section .grid{gap:22px 24px}
+#requestForm input,
+#requestForm textarea,
+#requestForm select{display:block;width:100%;max-width:100%}
 #requestForm .choice-row,
 #requestForm .privacy,
 #requestForm .actions,
 #requestForm .whatsapp-note,
-#requestForm .status{
-  margin-left:0 !important;
-  margin-right:0 !important;
-}
-#requestForm input,
-#requestForm textarea,
-#requestForm select{
-  max-width:100%;
-}
+#requestForm .status{width:100%}
 @media(max-width:760px){
-  #requestForm > .section,
-  #requestForm .catalog-link-row,
-  #requestForm .details-section{
-    margin-left:0 !important;
-    margin-right:0 !important;
-    padding-left:0 !important;
-    padding-right:0 !important;
-  }
+  #requestForm .section{margin-top:26px}
+  #requestForm .details-section{margin-top:30px}
 }
 
 </style>
@@ -506,56 +457,62 @@ footer a{color:#fff;text-decoration:none}
 </div>
 </section>
 
-<section class="section">
+<section class="section catalog-section">
 <div class="section-title"><span class="number">3</span><h2>Catalogo e codice articolo</h2><span class="line"></span></div>
 <div class="catalog-box">
-<p>Apra la nostra panoramica dei cataloghi, scelga il catalogo desiderato e indichi obbligatoriamente il codice articolo esatto.</p>
+<p>Apra la nostra panoramica dei cataloghi, scelga il catalogo desiderato e annoti il codice articolo esatto.</p>
 <a class="catalog-link" href="https://www.yumpu.com/kiosk/Ladurner1970" target="_blank" rel="noopener">Visualizza i cataloghi</a>
 </div>
-<div class="grid">
-<div><label for="katalog">Catalogo / Marchio *</label><input id="katalog" name="Catalogo / Marchio" required placeholder="Ad es. abbigliamento da lavoro, tessili, articoli promozionali"></div>
 
-<div class="full">
-  <label>Articoli con colori, taglie e quantità *</label>
-  <div id="articleList" class="article-list">
-    <div class="article-group">
-      <div class="article-head">
-        <div>
-          <label>Codice articolo *</label>
-          <input class="article-code-input" type="text" required placeholder="ad es. JN001">
-        </div>
-        <button type="button" class="remove-article" aria-label="Rimuovi articolo">×</button>
-      </div>
-      <div class="variant-list">
-        <div class="variant-row">
-          <div>
-            <label>Colore *</label>
-            <input class="variant-color-input" type="text" required placeholder="ad es. Nero">
-          </div>
-          <div>
-            <label>Taglia *</label>
-            <input class="variant-size-input" type="text" required placeholder="ad es. M">
-          </div>
-          <div>
-            <label>Quantità *</label>
-            <input class="variant-qty-input" type="number" min="1" required placeholder="10">
-          </div>
-          <button type="button" class="remove-variant" aria-label="Rimuovi variante">×</button>
-        </div>
-      </div>
-      <button type="button" class="secondary add-variant">+ Aggiungi colore / taglia</button>
-    </div>
+<div class="grid">
+  <div>
+    <label for="katalog">Catalogo / Marchio *</label>
+    <input id="katalog" name="Catalogo / Marchio" required placeholder="ad es. abbigliamento da lavoro, tessili, articoli promozionali">
   </div>
-  <button type="button" id="addArticle" class="secondary add-article">+ Aggiungi un altro articolo</button>
-  <input type="hidden" id="articleSummary" name="Articoli / Colori / Taglie / Quantità">
-  <div class="article-help">Inserisca il codice articolo una sola volta. Poi può aggiungere più colori, taglie e quantità allo stesso articolo.</div>
-</div>
-  
-  <input type="hidden" id="articleSummary" name="Articoli / Colori / Taglie / Quantità">
-  
-</div>
-</div>
-<div class="full"><label for="kataloglink">Link al prodotto o al catalogo</label><input id="kataloglink" name="Link al prodotto o al catalogo" type="url" placeholder="Facoltativo: link alla pagina del catalogo o al prodotto"></div>
+
+  <div class="full">
+    <label>Articoli con colori, taglie e quantità *</label>
+    <div id="articleList" class="article-list">
+      <div class="article-group">
+        <div class="article-head">
+          <div>
+            <label>Codice articolo *</label>
+            <input class="article-code-input" type="text" required placeholder="ad es. JN001">
+          </div>
+          <button type="button" class="remove-article" aria-label="Rimuovi articolo">×</button>
+        </div>
+
+        <div class="variant-list">
+          <div class="variant-row">
+            <div>
+              <label>Colore *</label>
+              <input class="variant-color-input" type="text" required placeholder="ad es. Nero">
+            </div>
+            <div>
+              <label>Taglia *</label>
+              <input class="variant-size-input" type="text" required placeholder="ad es. M">
+            </div>
+            <div>
+              <label>Quantità *</label>
+              <input class="variant-qty-input" type="number" min="1" required placeholder="10">
+            </div>
+            <button type="button" class="remove-variant" aria-label="Rimuovi variante">×</button>
+          </div>
+        </div>
+
+        <button type="button" class="secondary add-variant">+ Aggiungi colore / taglia</button>
+      </div>
+    </div>
+
+    <button type="button" id="addArticle" class="secondary add-article">+ Aggiungi un altro articolo</button>
+    <input type="hidden" id="articleSummary" name="Articoli / Colori / Taglie / Quantità">
+    <div class="article-help">Inserisca il codice articolo una sola volta. Poi può aggiungere più colori, taglie e quantità allo stesso articolo.</div>
+  </div>
+
+  <div class="full catalog-link-row">
+    <label for="kataloglink">Link al prodotto o al catalogo</label>
+    <input id="kataloglink" name="Link al prodotto o al catalogo" type="url" placeholder="Opzionale: link alla pagina del catalogo o al prodotto">
+  </div>
 </div>
 </section>
 
