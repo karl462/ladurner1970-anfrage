@@ -123,3 +123,13 @@ PDF/DRUCK-FIX:
 - Weißes Logo bleibt sichtbar.
 - Druckfarben werden mit print-color-adjust erzwungen.
 - Seitenumbrüche in wichtigen Formularblöcken verbessert.
+
+
+VERSION 1.0 FINAL – DATEIUPLOAD NEU:
+- Offizieller Web3Forms Advanced File Uploader eingebaut.
+- Kein multipart/form-data beim Advanced Uploader.
+- Bis zu 8 Dateien, maximal 10 MB pro Datei.
+- Keine starre Dateityp-Prüfung im Browser; dadurch werden normale JPG- und PNG-Dateien nicht mehr fälschlich blockiert.
+- Der Web3Forms-Client wird genau einmal geladen.
+- Alte, kollidierende Dateilisten-Logik entfernt.
+- Bestehende Formular-, WhatsApp- und PDF-Funktionen bleiben erhalten.

@@ -52,8 +52,7 @@ textarea{min-height:112px;resize:vertical}
 .variant-list{display:grid;gap:10px}.variant-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 110px 44px;gap:10px;align-items:end;padding-top:12px;border-top:1px solid #ddd}
 .article-group label{margin-bottom:5px}.remove-article,.remove-variant{width:44px;height:44px;padding:0;background:#fff;color:#000;border:1px solid #999;font-size:20px;line-height:1}.add-article,.add-variant{margin-top:12px;background:#fff;color:#000}.article-help{margin-top:10px;font-size:12px;color:#555;line-height:1.5}.catalog-link-row{margin-top:24px}
 .details-section{margin-top:34px}.details-section .section-title{margin-bottom:22px}.details-section .grid{gap:22px 24px}.details-section textarea{min-height:130px}.details-section .full textarea{min-height:150px}
-.upload{width:100%;border:1px dashed #555;background:#fafafa;padding:22px}.upload input{border:0;padding:0}.selected-files{margin-top:14px;padding:12px;border:1px solid #ccc;background:#fff;font-size:13px;line-height:1.6;overflow-wrap:anywhere}.selected-files strong{display:block;margin-bottom:5px;text-transform:uppercase;font-size:12px}.selected-files ul{margin:6px 0 0;padding-left:18px}
-.help{font-size:12px;color:#555;margin-top:8px;line-height:1.5}.privacy{margin-top:22px;display:flex;gap:9px;align-items:flex-start;font-size:12px;line-height:1.5}.privacy input{width:auto;margin-top:2px;accent-color:#000}
+.upload{width:100%;border:1px dashed #555;background:#fafafa;padding:22px}.upload input{border:0;padding:0}.help{font-size:12px;color:#555;margin-top:8px;line-height:1.5}.privacy{margin-top:22px;display:flex;gap:9px;align-items:flex-start;font-size:12px;line-height:1.5}.privacy input{width:auto;margin-top:2px;accent-color:#000}
 .actions{margin-top:26px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;width:100%}button{padding:15px 24px;border:1px solid #000;font-weight:bold;text-transform:uppercase;letter-spacing:.8px;cursor:pointer}.primary{background:#000;color:#fff;min-width:240px}.whatsapp-btn{background:var(--green);color:#07170d;border-color:var(--green);min-width:240px}.secondary{background:#fff;color:#000}.whatsapp-note{margin-top:14px;text-align:center}.status{display:none;margin-top:18px;padding:13px;border:1px solid #000;text-align:center;font-weight:bold}
 footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:13px}footer a{color:#fff;text-decoration:none}.hp{display:none!important}
 @media(max-width:760px){
@@ -171,10 +170,19 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 <section class="section">
 <div class="section-title"><span class="number">5</span><h2>Dateien hochladen</h2><span class="line"></span></div>
 <div class="upload">
-<label for="attachment">Logos, Druckdateien und Dokumente</label>
-<input id="attachment" name="attachment" type="file" data-advanced="true" multiple data-max-files="8" data-max-file-size="10MB" accept=".jpg,.jpeg,.png,.pdf,.ai,.eps,.svg,.zip,.dst,.emb" data-content="Dateien hierher ziehen oder auswählen">
-<div class="help"><strong>Mehrfachauswahl möglich:</strong> bis zu 8 Dateien mit jeweils maximal 10 MB. Unterstützt werden JPG, PNG, PDF, AI, EPS, SVG, ZIP, DST und EMB. Die Dateien werden bei Versand per E-Mail als Anhänge mitgesendet.</div>
-<div class="selected-files" id="selectedFiles"><strong>Ausgewählte Dateien</strong><div id="selectedFileNames">Noch keine Dateien ausgewählt.</div></div>
+  <label for="attachment">Logos, Druckdateien und Dokumente</label>
+  <input
+    id="attachment"
+    name="attachment"
+    type="file"
+    data-advanced="true"
+    multiple
+    data-max-files="8"
+    data-max-file-size="10MB"
+    data-content="Dateien hierher ziehen oder auswählen">
+  <div class="help"><strong>Mehrfachauswahl möglich:</strong> bis zu 8 Dateien mit jeweils maximal 10 MB. JPG, PNG, PDF, AI, EPS, SVG, ZIP, DST, EMB und weitere Druckdateien werden akzeptiert. Die Dateien werden bei Versand per E-Mail als Anhänge mitgesendet.</div>
+</div>
+</div>
 </div>
 </section>
 
@@ -209,26 +217,6 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 <script>
 const form = document.getElementById('requestForm');
 
-const attachmentInput = document.getElementById('attachment');
-const selectedFileNames = document.getElementById('selectedFileNames');
-
-function updateSelectedFiles() {
-  const files = [...attachmentInput.files];
-  if (!files.length) {
-    selectedFileNames.textContent = 'Noch keine Dateien ausgewählt.';
-    return;
-  }
-  const list = document.createElement('ul');
-  files.forEach(file => {
-    const item = document.createElement('li');
-    const sizeMB = (file.size / 1024 / 1024).toFixed(2);
-    item.textContent = `${file.name} (${sizeMB} MB)`;
-    list.appendChild(item);
-  });
-  selectedFileNames.replaceChildren(list);
-}
-
-attachmentInput.addEventListener('change', updateSelectedFiles);
 
 const statusBox = document.getElementById('status');
 const labels = {"name": "Name", "company": "Firma/Verein", "email": "E-Mail", "phone": "Telefon", "address": "Adresse", "type": "Art der Anfrage", "delivery": "Liefertermin", "budget": "Budget", "product": "Artikel/Produkt", "colors": "Farben", "qty": "Mengen und Größen", "refine": "Druck/Stick/Veredelung", "notes": "Weitere Informationen", "contact": "Kontaktwunsch", "catalog": "Katalog/Marke", "articleNo": "Artikelnummern / Artikelcodes", "catalogLink": "Produkt-/Kataloglink"};
@@ -422,7 +410,8 @@ document.getElementById('whatsappSend').addEventListener('click', () => {
   const qty = fieldValue('mengen');
   const refine = fieldValue('veredelung');
   const notes = fieldValue('notizen');
-  const selectedFiles = [...document.getElementById('attachment').files];
+  const uploadInput = document.getElementById('attachment');
+  const selectedFiles = uploadInput && uploadInput.files ? [...uploadInput.files] : [];
   const articleDetails = updateArticleSummary();
   const typeName = "Art der Anfrage";
   const contactName = "Kontaktwunsch";
@@ -471,6 +460,7 @@ document.getElementById('whatsappSend').addEventListener('click', () => {
   window.location.href = whatsappUrl;
 });
 </script>
+
 <script src="https://web3forms.com/client/script.js" async defer></script>
 </body>
 </html>
