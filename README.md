@@ -99,3 +99,12 @@ MASTER FINAL:
 - Desktop und Mobile verwenden dieselbe klare Struktur.
 - Fehlerhafte doppelte HTML-Tags und IDs entfernt.
 - Alle Funktionen unverändert erhalten.
+
+
+FLEXIBLE ANFRAGE FINAL:
+- Anfrageart: Katalogartikel, Sonderproduktion oder Idee/Beratung.
+- Artikelcode, Farbe, Größe, Menge und Katalog sind optional.
+- Katalogbereich wird nur bei Katalogartikel eingeblendet.
+- E-Mail ist nur beim Versand per E-Mail Pflicht.
+- WhatsApp-Versand funktioniert ohne E-Mail-Adresse.
+- Beschreibung der Anfrage bleibt Pflichtfeld.

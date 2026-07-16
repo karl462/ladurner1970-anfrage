@@ -69,6 +69,13 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 @media(max-width:390px){.content{padding-left:12px;padding-right:12px}.topbar{padding-left:12px;padding-right:12px}h1{font-size:29px}.section-title h2{font-size:16px}.quick-actions a{font-size:11px}}
 @media print{body{background:#fff}.page{width:100%;margin:0;box-shadow:none}.actions,.status,.lang,.quick-actions{display:none!important}}
 
+
+/* Flexible Anfragearten */
+.request-mode-note{margin-top:10px;font-size:12px;color:#555;line-height:1.5}
+.catalog-section.is-hidden{display:none}
+.optional-badge{font-size:10px;font-weight:bold;border:1px solid #999;padding:2px 6px;margin-left:6px;color:#555;vertical-align:middle}
+.field-error{border-color:#b00020!important;box-shadow:0 0 0 1px #b00020!important}
+
 </style>
 </head>
 <body>
@@ -107,7 +114,7 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 <div><label for="vorname">Vorname *</label><input id="vorname" name="Vorname" required></div>
 <div><label for="nachname">Nachname *</label><input id="nachname" name="Nachname" required></div>
 <div><label for="firma">Firma / Verein</label><input id="firma" name="Firma / Verein"></div>
-<div><label for="email">E-Mail *</label><input id="email" name="email" type="email" required></div>
+<div><label for="email">E-Mail</label><input id="email" name="email" type="email" placeholder="Für Versand per E-Mail erforderlich"></div>
 <div><label for="telefon">Telefon *</label><input id="telefon" name="Telefon" type="tel" required></div>
 <div><label for="adresse">Adresse</label><input id="adresse" name="Adresse"></div>
 </div>
@@ -115,30 +122,31 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 
 <section class="section">
 <div class="section-title"><span class="number">2</span><h2>Art der Anfrage</h2><span class="line"></span></div>
-<div class="choice-cards">
-<label class="choice-card"><input type="checkbox" name="Art der Anfrage" value="Artikel"><span><b>Artikel</b><span>Ich suche bestimmte Artikel oder Sortimente.</span></span></label>
-<label class="choice-card"><input type="checkbox" name="Art der Anfrage" value="Druck"><span><b>Druck</b><span>Ich möchte Artikel mit Druck veredeln lassen.</span></span></label>
-<label class="choice-card"><input type="checkbox" name="Art der Anfrage" value="Stick"><span><b>Stick</b><span>Ich möchte Artikel mit Stick veredeln lassen.</span></span></label>
+<div class="choice-cards request-modes">
+<label class="choice-card"><input type="radio" name="Art der Anfrage" value="Katalogartikel" required><span><b>Artikel aus dem Katalog</b><span>Artikelcode, Farbe, Größe und Menge können angegeben werden.</span></span></label>
+<label class="choice-card"><input type="radio" name="Art der Anfrage" value="Sonderproduktion" required><span><b>Sonderproduktion</b><span>Individuelle Produktion nach Wunsch, Muster oder eigener Idee.</span></span></label>
+<label class="choice-card"><input type="radio" name="Art der Anfrage" value="Idee / Beratung" required><span><b>Idee oder Beratung</b><span>Sie kennen noch keinen Artikelcode und möchten beraten werden.</span></span></label>
 </div>
+<div class="request-mode-note">Wählen Sie die passende Anfrageart. Bei Sonderproduktionen und Ideen ist kein Artikelcode erforderlich.</div>
 <div class="grid" style="margin-top:18px">
 <div><label for="liefertermin">Gewünschter Liefertermin</label><input id="liefertermin" name="Gewünschter Liefertermin" type="date"></div>
 <div><label for="budget">Ungefähres Budget</label><input id="budget" name="Ungefähres Budget" placeholder="z. B. / ad es. 1.500 €"></div>
 </div>
 </section>
 
-<section class="section catalog-section">
-<div class="section-title"><span class="number">3</span><h2>Katalog und Artikelnummer</h2><span class="line"></span></div>
-<div class="catalog-box"><p>Öffnen Sie unsere Katalogübersicht, wählen Sie den gewünschten Katalog und notieren Sie bitte unbedingt die genaue Artikelnummer.</p><a class="catalog-link" href="https://www.yumpu.com/kiosk/Ladurner1970" target="_blank" rel="noopener">Kataloge ansehen</a></div>
+<section class="section catalog-section is-hidden" id="catalogSection">
+<div class="section-title"><span class="number">3</span><h2>Katalog und Artikelnummer <span class="optional-badge">OPTIONAL</span></h2><span class="line"></span></div>
+<div class="catalog-box"><p>Öffnen Sie unsere Katalogübersicht, wählen Sie den gewünschten Katalog und tragen Sie – falls bekannt – Artikelcode, Farbe, Größe und Menge ein.</p><a class="catalog-link" href="https://www.yumpu.com/kiosk/Ladurner1970" target="_blank" rel="noopener">Kataloge ansehen</a></div>
 <div class="grid">
-<div><label for="katalog">Katalog / Marke *</label><input id="katalog" name="Katalog / Marke" required placeholder="z. B. Arbeitsbekleidung, Textilien, Werbeartikel"></div>
-<div class="full"><label>Artikel mit Farben, Größen und Mengen *</label><div id="articleList" class="article-list"><div class="article-group"><div class="article-head"><div><label>Artikelcode *</label><input class="article-code-input" type="text" required placeholder="z. B. JN001"></div><button type="button" class="remove-article" aria-label="Artikel entfernen">×</button></div><div class="variant-list"><div class="variant-row"><div><label>Farbe *</label><input class="variant-color-input" type="text" required placeholder="z. B. Schwarz"></div><div><label>Größe *</label><input class="variant-size-input" type="text" required placeholder="z. B. M"></div><div><label>Menge *</label><input class="variant-qty-input" type="number" min="1" required placeholder="10"></div><button type="button" class="remove-variant" aria-label="Variante entfernen">×</button></div></div><button type="button" class="secondary add-variant">+ Farbe / Größe hinzufügen</button></div></div><button type="button" id="addArticle" class="secondary add-article">+ Weiteren Artikel hinzufügen</button><input type="hidden" id="articleSummary" name="Artikel / Farben / Größen / Mengen"><div class="article-help">Den Artikelcode nur einmal eingeben. Danach können mehrere Farben, Größen und Mengen zu diesem Artikel ergänzt werden.</div></div>
+<div><label for="katalog">Katalog / Marke</label><input id="katalog" name="Katalog / Marke" placeholder="z. B. Arbeitsbekleidung, Textilien, Werbeartikel"></div>
+<div class="full"><label>Artikel mit Farben, Größen und Mengen</label><div id="articleList" class="article-list"><div class="article-group"><div class="article-head"><div><label>Artikelcode</label><input class="article-code-input" type="text" placeholder="z. B. JN001"></div><button type="button" class="remove-article" aria-label="Artikel entfernen">×</button></div><div class="variant-list"><div class="variant-row"><div><label>Farbe</label><input class="variant-color-input" type="text" placeholder="z. B. Schwarz"></div><div><label>Größe</label><input class="variant-size-input" type="text" placeholder="z. B. M"></div><div><label>Menge</label><input class="variant-qty-input" type="number" min="1" placeholder="10"></div><button type="button" class="remove-variant" aria-label="Variante entfernen">×</button></div></div><button type="button" class="secondary add-variant">+ Farbe / Größe hinzufügen</button></div></div><button type="button" id="addArticle" class="secondary add-article">+ Weiteren Artikel hinzufügen</button><input type="hidden" id="articleSummary" name="Artikel / Farben / Größen / Mengen"><div class="article-help">Falls bekannt, den Artikelcode einmal eingeben. Farbe, Größe und Menge können ergänzt werden. Ohne Artikelcode beschreiben Sie Ihren Wunsch einfach im nächsten Abschnitt.</div></div>
 <div class="full catalog-link-row"><label for="kataloglink">Produkt- oder Kataloglink</label><input id="kataloglink" name="Produkt- oder Kataloglink" type="url" placeholder="Optional: Link zur Katalogseite oder zum Produkt"></div>
 </div></section>
 
 <section class="section details-section">
 <div class="section-title"><span class="number">4</span><h2>Details zur Anfrage</h2><span class="line"></span></div>
 <div class="grid">
-<div><label for="artikel">Gewünschter Artikel / Produkt *</label><textarea id="artikel" name="Gewünschter Artikel / Produkt" required placeholder="Bitte beschreiben Sie den gewünschten Artikel möglichst genau."></textarea></div>
+<div><label for="artikel">Beschreibung Ihrer Anfrage *</label><textarea id="artikel" name="Gewünschter Artikel / Produkt" required placeholder="Beschreiben Sie den gewünschten Artikel, die Sonderproduktion oder Ihre Idee möglichst genau."></textarea></div>
 <div><label for="farben">Farben</label><textarea id="farben" name="Farben" placeholder="Welche Farben wünschen Sie?"></textarea></div>
 <div><label for="mengen">Mengen und Größen</label><textarea id="mengen" name="Mengen und Größen" placeholder="Bitte Stückzahlen und Größen angeben."></textarea></div>
 <div><label for="veredelung">Druck / Stick / Veredelung</label><textarea id="veredelung" name="Druck / Stick / Veredelung" placeholder="Platzierung, Größe, Farben und weitere Details."></textarea></div>
@@ -222,6 +230,40 @@ function fieldValue(id){
 }
 
 
+
+const catalogSection = document.getElementById('catalogSection');
+const requestModeInputs = [...document.querySelectorAll('input[name="Art der Anfrage"]')];
+const emailInput = document.getElementById('email');
+const privacyInput = document.getElementById('datenschutz');
+
+function setRequestMode() {
+  const selected = requestModeInputs.find(input => input.checked)?.value || '';
+  catalogSection.classList.toggle('is-hidden', selected !== 'Katalogartikel');
+}
+requestModeInputs.forEach(input => input.addEventListener('change', setRequestMode));
+setRequestMode();
+
+function validateCommonFields() {
+  emailInput.setCustomValidity('');
+  if (!form.reportValidity()) return false;
+  if (!privacyInput.checked) {
+    alert('Bitte stimmen Sie der Datenverarbeitung zu.');
+    privacyInput.focus();
+    return false;
+  }
+  return true;
+}
+
+function validateEmailSubmission() {
+  emailInput.setCustomValidity('');
+  if (!emailInput.value.trim()) {
+    emailInput.setCustomValidity('Bitte geben Sie für den E-Mail-Versand Ihre E-Mail-Adresse ein.');
+    emailInput.reportValidity();
+    return false;
+  }
+  return validateCommonFields();
+}
+
 const articleList = document.getElementById('articleList');
 const addArticleButton = document.getElementById('addArticle');
 const articleSummary = document.getElementById('articleSummary');
@@ -302,15 +344,24 @@ addArticleButton.addEventListener('click', () => {
   newGroup.querySelector('.article-code-input').focus();
 });
 
-form.addEventListener('submit', updateArticleSummary);
-
-form.addEventListener('submit', () => {
+form.addEventListener('submit', (event) => {
+  updateArticleSummary();
+  if (!validateEmailSubmission()) {
+    event.preventDefault();
+    return;
+  }
   statusBox.style.display='block';
   statusBox.textContent="Ihre Anfrage wird gesendet …";
 });
 
+form.addEventListener('reset', () => {
+  emailInput.setCustomValidity('');
+  setTimeout(setRequestMode, 0);
+});
+
 document.getElementById('whatsappSend').addEventListener('click', () => {
-  if (!form.reportValidity()) return;
+  emailInput.setCustomValidity('');
+  if (!validateCommonFields()) return;
 
   const first = fieldValue('vorname');
   const last = fieldValue('nachname');
