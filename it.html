@@ -255,6 +255,7 @@ button{
   min-width:240px;
 }
 .secondary{background:#fff;color:#000}
+.whatsapp-note{margin-top:14px;text-align:center;}
 .status{
   display:none;
   margin-top:18px;
@@ -361,7 +362,7 @@ footer a{color:#fff;text-decoration:none}
 </div>
 <div class="grid">
 <div><label for="katalog">Catalogo / Marchio *</label><input id="katalog" name="Catalogo / Marchio" required placeholder="Ad es. abbigliamento da lavoro, tessili, articoli promozionali"></div>
-<div><label for="artikelnummer">Codice articolo *</label><input id="artikelnummer" name="Codice articolo" required placeholder="Codice articolo esatto indicato nel catalogo"></div>
+<div><label for="artikelnummer">Codici articolo *</label><textarea id="artikelnummer" name="Codici articolo" required placeholder="È possibile inserire più codici. Scriva ogni codice su una nuova riga, ad es.&#10;JN001&#10;JN002&#10;JN003"></textarea><div class="help">È possibile inserire più codici articolo, uno per riga oppure separati da una virgola.</div></div>
 <div class="full"><label for="kataloglink">Link al prodotto o al catalogo</label><input id="kataloglink" name="Link al prodotto o al catalogo" type="url" placeholder="Facoltativo: link alla pagina del catalogo o al prodotto"></div>
 </div>
 </section>
@@ -382,7 +383,7 @@ footer a{color:#fff;text-decoration:none}
 <div class="upload">
 <label for="attachment">Logo, grafica, PDF o immagine di riferimento</label>
 <input id="attachment" name="attachment" type="file" accept=".jpg,.jpeg,.png,.pdf,.ai,.eps,.svg,.zip">
-<div class="help">Formati consentiti: JPG, PNG, PDF, AI, EPS, SVG e ZIP. Utilizzare file possibilmente di piccole dimensioni.</div>
+<div class="help">Carichi il logo, il file di stampa o il PDF. Formati consentiti: JPG, PNG, PDF, AI, EPS, SVG e ZIP. Il file verrà inviato come allegato tramite e-mail.</div>
 </div>
 </section>
 
@@ -400,6 +401,7 @@ footer a{color:#fff;text-decoration:none}
 <button type="button" class="secondary" onclick="window.print()">Salva come PDF</button>
 <button type="reset" class="secondary">Cancella modulo</button>
 </div>
+<div class="help whatsapp-note"><strong>Nota WhatsApp:</strong> Dopo l’apertura di WhatsApp può allegare facilmente il logo o il file tramite l’icona della graffetta 📎.</div>
 <div id="status" class="status"></div>
 </section>
 </form>
@@ -416,7 +418,7 @@ footer a{color:#fff;text-decoration:none}
 <script>
 const form = document.getElementById('requestForm');
 const statusBox = document.getElementById('status');
-const labels = {"name": "Nome", "company": "Azienda/Associazione", "email": "E-mail", "phone": "Telefono", "address": "Indirizzo", "type": "Tipo di richiesta", "delivery": "Data di consegna", "budget": "Budget", "product": "Articolo/Prodotto", "colors": "Colori", "qty": "Quantità e taglie", "refine": "Stampa/Ricamo/Personalizzazione", "notes": "Ulteriori informazioni", "contact": "Preferenza di contatto", "catalog": "Catalogo/Marchio", "articleNo": "Codice articolo", "catalogLink": "Link prodotto/catalogo"};
+const labels = {"name": "Nome", "company": "Azienda/Associazione", "email": "E-mail", "phone": "Telefono", "address": "Indirizzo", "type": "Tipo di richiesta", "delivery": "Data di consegna", "budget": "Budget", "product": "Articolo/Prodotto", "colors": "Colori", "qty": "Quantità e taglie", "refine": "Stampa/Ricamo/Personalizzazione", "notes": "Ulteriori informazioni", "contact": "Preferenza di contatto", "catalog": "Catalogo/Marchio", "articleNo": "Codici articolo", "catalogLink": "Link prodotto/catalogo"};
 
 function checkedValues(name){
   return [...document.querySelectorAll(`[name="${CSS.escape(name)}"]:checked`)]
@@ -452,6 +454,7 @@ document.getElementById('whatsappSend').addEventListener('click', () => {
   const qty = fieldValue('mengen');
   const refine = fieldValue('veredelung');
   const notes = fieldValue('notizen');
+  const selectedFile = document.getElementById('attachment').files[0];
   const typeName = "Tipo di richiesta";
   const contactName = "Preferenza di contatto";
   const type = checkedValues(typeName);
@@ -489,7 +492,8 @@ document.getElementById('whatsappSend').addEventListener('click', () => {
     labels.notes + ':',
     notes || '-',
     '',
-    labels.contact + ': ' + (contact || '-')
+    labels.contact + ': ' + (contact || '-'),
+    'File selezionato: ' + (selectedFile ? selectedFile.name : '-')
   ].join('\n');
 
   window.open('https://wa.me/393355206498?text=' + encodeURIComponent(msg), '_blank', 'noopener');

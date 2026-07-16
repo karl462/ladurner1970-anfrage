@@ -255,6 +255,7 @@ button{
   min-width:240px;
 }
 .secondary{background:#fff;color:#000}
+.whatsapp-note{margin-top:14px;text-align:center;}
 .status{
   display:none;
   margin-top:18px;
@@ -361,7 +362,7 @@ footer a{color:#fff;text-decoration:none}
 </div>
 <div class="grid">
 <div><label for="katalog">Katalog / Marke *</label><input id="katalog" name="Katalog / Marke" required placeholder="z. B. Arbeitsbekleidung, Textilien, Werbeartikel"></div>
-<div><label for="artikelnummer">Artikelnummer *</label><input id="artikelnummer" name="Artikelnummer" required placeholder="Genaue Artikelnummer laut Katalog"></div>
+<div><label for="artikelnummer">Artikelnummern / Artikelcodes *</label><textarea id="artikelnummer" name="Artikelnummern / Artikelcodes" required placeholder="Mehrere Artikelcodes möglich. Bitte jeden Code in eine neue Zeile schreiben, z. B.&#10;JN001&#10;JN002&#10;JN003"></textarea><div class="help">Mehrere Artikelnummern können untereinander oder durch Komma getrennt eingetragen werden.</div></div>
 <div class="full"><label for="kataloglink">Produkt- oder Kataloglink</label><input id="kataloglink" name="Produkt- oder Kataloglink" type="url" placeholder="Optional: Link zur Katalogseite oder zum Produkt"></div>
 </div>
 </section>
@@ -382,7 +383,7 @@ footer a{color:#fff;text-decoration:none}
 <div class="upload">
 <label for="attachment">Logo, Design, PDF oder Referenzbild</label>
 <input id="attachment" name="attachment" type="file" accept=".jpg,.jpeg,.png,.pdf,.ai,.eps,.svg,.zip">
-<div class="help">Erlaubte Formate: JPG, PNG, PDF, AI, EPS, SVG und ZIP. Bitte möglichst kleine Dateien verwenden.</div>
+<div class="help">Logo, Druckdatei oder PDF hochladen. Erlaubte Formate: JPG, PNG, PDF, AI, EPS, SVG und ZIP. Die Datei wird bei Versand per E-Mail als Anhang mitgesendet.</div>
 </div>
 </section>
 
@@ -400,6 +401,7 @@ footer a{color:#fff;text-decoration:none}
 <button type="button" class="secondary" onclick="window.print()">Als PDF speichern</button>
 <button type="reset" class="secondary">Formular leeren</button>
 </div>
+<div class="help whatsapp-note"><strong>Hinweis WhatsApp:</strong> Nach dem Öffnen von WhatsApp können Sie Ihr Logo oder Ihre Datei ganz einfach über die Büroklammer 📎 anhängen.</div>
 <div id="status" class="status"></div>
 </section>
 </form>
@@ -416,7 +418,7 @@ footer a{color:#fff;text-decoration:none}
 <script>
 const form = document.getElementById('requestForm');
 const statusBox = document.getElementById('status');
-const labels = {"name": "Name", "company": "Firma/Verein", "email": "E-Mail", "phone": "Telefon", "address": "Adresse", "type": "Art der Anfrage", "delivery": "Liefertermin", "budget": "Budget", "product": "Artikel/Produkt", "colors": "Farben", "qty": "Mengen und Größen", "refine": "Druck/Stick/Veredelung", "notes": "Weitere Informationen", "contact": "Kontaktwunsch", "catalog": "Katalog/Marke", "articleNo": "Artikelnummer", "catalogLink": "Produkt-/Kataloglink"};
+const labels = {"name": "Name", "company": "Firma/Verein", "email": "E-Mail", "phone": "Telefon", "address": "Adresse", "type": "Art der Anfrage", "delivery": "Liefertermin", "budget": "Budget", "product": "Artikel/Produkt", "colors": "Farben", "qty": "Mengen und Größen", "refine": "Druck/Stick/Veredelung", "notes": "Weitere Informationen", "contact": "Kontaktwunsch", "catalog": "Katalog/Marke", "articleNo": "Artikelnummern / Artikelcodes", "catalogLink": "Produkt-/Kataloglink"};
 
 function checkedValues(name){
   return [...document.querySelectorAll(`[name="${CSS.escape(name)}"]:checked`)]
@@ -452,6 +454,7 @@ document.getElementById('whatsappSend').addEventListener('click', () => {
   const qty = fieldValue('mengen');
   const refine = fieldValue('veredelung');
   const notes = fieldValue('notizen');
+  const selectedFile = document.getElementById('attachment').files[0];
   const typeName = "Art der Anfrage";
   const contactName = "Kontaktwunsch";
   const type = checkedValues(typeName);
@@ -489,7 +492,8 @@ document.getElementById('whatsappSend').addEventListener('click', () => {
     labels.notes + ':',
     notes || '-',
     '',
-    labels.contact + ': ' + (contact || '-')
+    labels.contact + ': ' + (contact || '-'),
+    'Ausgewählte Datei: ' + (selectedFile ? selectedFile.name : '-')
   ].join('\n');
 
   window.open('https://wa.me/393355206498?text=' + encodeURIComponent(msg), '_blank', 'noopener');
