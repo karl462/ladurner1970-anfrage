@@ -375,29 +375,147 @@ footer a{color:#fff;text-decoration:none}
   .actions,.status,.lang,.quick-actions{display:none!important}
 }
 
+@media(max-width:760px){
+  .catalog-link-row,
+  .details-section{
+  }
+}
 
-/* Saubere, einheitliche Formularausrichtung */
-#requestForm{width:100%;margin:0;padding:0}
-#requestForm .section{width:100%;margin:30px 0 0;padding:0}
-#requestForm .section-title,
-#requestForm .grid,
-#requestForm .full,
-#requestForm .catalog-box,
-#requestForm .upload{width:100%;margin-left:0;margin-right:0}
-#requestForm .catalog-link-row{margin:24px 0 0;padding:0}
-#requestForm .details-section{margin:34px 0 0;padding:0}
-#requestForm .details-section .grid{gap:22px 24px}
-#requestForm input,
-#requestForm textarea,
-#requestForm select{display:block;width:100%;max-width:100%}
+
+/* Finale einheitliche Ausrichtung aller Formularbereiche */
+#requestForm{
+  width:100%;
+  margin:0;
+  padding:0;
+}
+#requestForm > .section{
+  width:100%;
+  margin-left:0 !important;
+  margin-right:0 !important;
+  padding-left:0 !important;
+  padding-right:0 !important;
+}
+#requestForm .catalog-link-row{
+  width:100%;
+  margin:24px 0 0 !important;
+  padding:0 !important;
+}
+#requestForm .details-section{
+  width:100%;
+  margin:34px 0 0 !important;
+  padding:0 !important;
+}
+#requestForm .section-title{
+  width:100%;
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
+#requestForm .grid{
+  width:100%;
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
+#requestForm .full{
+  width:100%;
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
+#requestForm .upload{
+  width:100%;
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
 #requestForm .choice-row,
 #requestForm .privacy,
 #requestForm .actions,
 #requestForm .whatsapp-note,
-#requestForm .status{width:100%}
+#requestForm .status{
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
+#requestForm input,
+#requestForm textarea,
+#requestForm select{
+  max-width:100%;
+}
 @media(max-width:760px){
-  #requestForm .section{margin-top:26px}
-  #requestForm .details-section{margin-top:30px}
+  #requestForm > .section,
+  #requestForm .catalog-link-row,
+  #requestForm .details-section{
+    margin-left:0 !important;
+    margin-right:0 !important;
+    padding-left:0 !important;
+    padding-right:0 !important;
+  }
+}
+
+
+/* Finale Mobile-Optimierung – Desktop bleibt unverändert */
+@media (max-width:760px){
+  body{background:#fff;overflow-x:hidden}
+  .page{
+    width:100%;
+    max-width:none;
+    margin:0;
+    box-shadow:none;
+    overflow:hidden;
+  }
+  .topbar{padding:58px 16px 22px}
+  .topbar img{width:min(76vw,320px)}
+  .lang{right:12px;top:12px}
+  .claim{font-size:10px;letter-spacing:2px;line-height:1.5}
+  .quick-actions{gap:8px;margin-top:16px}
+  .quick-actions a{flex:1 1 calc(33.333% - 8px);min-width:0;padding:10px 6px;font-size:12px}
+
+  .content{padding:26px 16px 32px}
+  .hero{grid-template-columns:1fr;gap:24px;padding-bottom:24px}
+  h1{font-size:32px;overflow-wrap:anywhere}
+  .subtitle{font-size:16px;letter-spacing:2px;line-height:1.35}
+  .services{border-left:0;border-top:1px solid #aaa;padding:20px 0 0}
+
+  #requestForm,.section,.grid,.full,.catalog-box,.upload{min-width:0;max-width:100%}
+  .section{margin-top:26px}
+  .section-title{gap:9px;align-items:center;margin-bottom:16px;min-width:0}
+  .number{width:26px;height:26px;min-width:26px;font-size:14px}
+  .section-title h2{font-size:18px;white-space:normal;line-height:1.2;overflow-wrap:anywhere}
+  .section-title .line{min-width:18px;flex:1}
+
+  .grid,.choice-cards{grid-template-columns:minmax(0,1fr);gap:16px}
+  .full{grid-column:1}
+  input,select,textarea{font-size:16px;min-width:0}
+  textarea{min-height:118px}
+  .details-section textarea,.details-section .full textarea{min-height:118px}
+
+  .catalog-box{padding:18px}
+  .catalog-link{display:block;width:100%;text-align:center;padding:13px 10px}
+  .catalog-link-row{margin-top:20px!important}
+
+  .article-group{padding:13px}
+  .article-head{grid-template-columns:minmax(0,1fr);gap:8px}
+  .variant-row{grid-template-columns:minmax(0,1fr);gap:10px}
+  .remove-article,.remove-variant{width:100%;height:42px}
+  .add-article,.add-variant{display:block;width:100%;padding:13px 10px;white-space:normal;line-height:1.25}
+  .article-help{font-size:12px}
+
+  .upload{padding:16px}
+  .selected-files{padding:10px;overflow-wrap:anywhere}
+  .choice-row{display:grid;grid-template-columns:1fr;gap:12px;padding:4px 0}
+  .choice-row label{align-items:flex-start;line-height:1.35}
+  .privacy{font-size:12px;line-height:1.45}
+
+  .actions{display:grid;grid-template-columns:1fr;gap:10px;margin-top:22px}
+  .actions button,.primary,.whatsapp-btn,.secondary{width:100%;min-width:0;padding:14px 10px;white-space:normal;line-height:1.25}
+  .whatsapp-note{text-align:left;font-size:12px;overflow-wrap:anywhere}
+
+  footer{display:grid;grid-template-columns:1fr;gap:8px;padding:20px 16px;text-align:center;line-height:1.5}
+  footer a{overflow-wrap:anywhere}
+}
+@media (max-width:390px){
+  .content{padding-left:12px;padding-right:12px}
+  .topbar{padding-left:12px;padding-right:12px}
+  h1{font-size:29px}
+  .section-title h2{font-size:16px}
+  .quick-actions a{font-size:11px}
 }
 
 </style>
@@ -457,62 +575,56 @@ footer a{color:#fff;text-decoration:none}
 </div>
 </section>
 
-<section class="section catalog-section">
+<section class="section">
 <div class="section-title"><span class="number">3</span><h2>Katalog und Artikelnummer</h2><span class="line"></span></div>
 <div class="catalog-box">
 <p>Öffnen Sie unsere Katalogübersicht, wählen Sie den gewünschten Katalog und notieren Sie bitte unbedingt die genaue Artikelnummer.</p>
 <a class="catalog-link" href="https://www.yumpu.com/kiosk/Ladurner1970" target="_blank" rel="noopener">Kataloge ansehen</a>
 </div>
-
 <div class="grid">
-  <div>
-    <label for="katalog">Katalog / Marke *</label>
-    <input id="katalog" name="Katalog / Marke" required placeholder="z. B. Arbeitsbekleidung, Textilien, Werbeartikel">
-  </div>
+<div><label for="katalog">Katalog / Marke *</label><input id="katalog" name="Katalog / Marke" required placeholder="z. B. Arbeitsbekleidung, Textilien, Werbeartikel"></div>
 
-  <div class="full">
-    <label>Artikel mit Farben, Größen und Mengen *</label>
-    <div id="articleList" class="article-list">
-      <div class="article-group">
-        <div class="article-head">
-          <div>
-            <label>Artikelcode *</label>
-            <input class="article-code-input" type="text" required placeholder="z. B. JN001">
-          </div>
-          <button type="button" class="remove-article" aria-label="Artikel entfernen">×</button>
+<div class="full">
+  <label>Artikel mit Farben, Größen und Mengen *</label>
+  <div id="articleList" class="article-list">
+    <div class="article-group">
+      <div class="article-head">
+        <div>
+          <label>Artikelcode *</label>
+          <input class="article-code-input" type="text" required placeholder="z. B. JN001">
         </div>
-
-        <div class="variant-list">
-          <div class="variant-row">
-            <div>
-              <label>Farbe *</label>
-              <input class="variant-color-input" type="text" required placeholder="z. B. Schwarz">
-            </div>
-            <div>
-              <label>Größe *</label>
-              <input class="variant-size-input" type="text" required placeholder="z. B. M">
-            </div>
-            <div>
-              <label>Menge *</label>
-              <input class="variant-qty-input" type="number" min="1" required placeholder="10">
-            </div>
-            <button type="button" class="remove-variant" aria-label="Variante entfernen">×</button>
-          </div>
-        </div>
-
-        <button type="button" class="secondary add-variant">+ Farbe / Größe hinzufügen</button>
+        <button type="button" class="remove-article" aria-label="Artikel entfernen">×</button>
       </div>
+      <div class="variant-list">
+        <div class="variant-row">
+          <div>
+            <label>Farbe *</label>
+            <input class="variant-color-input" type="text" required placeholder="z. B. Schwarz">
+          </div>
+          <div>
+            <label>Größe *</label>
+            <input class="variant-size-input" type="text" required placeholder="z. B. M">
+          </div>
+          <div>
+            <label>Menge *</label>
+            <input class="variant-qty-input" type="number" min="1" required placeholder="10">
+          </div>
+          <button type="button" class="remove-variant" aria-label="Variante entfernen">×</button>
+        </div>
+      </div>
+      <button type="button" class="secondary add-variant">+ Farbe / Größe hinzufügen</button>
     </div>
-
-    <button type="button" id="addArticle" class="secondary add-article">+ Weiteren Artikel hinzufügen</button>
-    <input type="hidden" id="articleSummary" name="Artikel / Farben / Größen / Mengen">
-    <div class="article-help">Den Artikelcode nur einmal eingeben. Danach können mehrere Farben, Größen und Mengen zu diesem Artikel ergänzt werden.</div>
   </div>
-
-  <div class="full catalog-link-row">
-    <label for="kataloglink">Produkt- oder Kataloglink</label>
-    <input id="kataloglink" name="Produkt- oder Kataloglink" type="url" placeholder="Optional: Link zur Katalogseite oder zum Produkt">
-  </div>
+  <button type="button" id="addArticle" class="secondary add-article">+ Weiteren Artikel hinzufügen</button>
+  <input type="hidden" id="articleSummary" name="Artikel / Farben / Größen / Mengen">
+  <div class="article-help">Den Artikelcode nur einmal eingeben. Danach können mehrere Farben, Größen und Mengen zu diesem Artikel ergänzt werden.</div>
+</div>
+  
+  <input type="hidden" id="articleSummary" name="Artikel / Farben / Größen / Mengen">
+  
+</div>
+</div>
+<div class="full"><label for="kataloglink">Produkt- oder Kataloglink</label><input id="kataloglink" name="Produkt- oder Kataloglink" type="url" placeholder="Optional: Link zur Katalogseite oder zum Produkt"></div>
 </div>
 </section>
 
