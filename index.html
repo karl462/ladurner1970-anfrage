@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)file:///C:/Users/Karl/Downloads/Ladurner1970_Anfrageformular_DE.html -->
+<html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ladurner1970 – Artikel-, Druck- und Stickanfrage</title>
+  <style>
+    :root{
+      --black:#050505;
+      --white:#ffffff;
+      --light:#f4f4f4;
+      --mid:#d6d6d6;
+      --text:#161616;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:#ececec;
+      color:var(--text);
+    }
+    .page{
+      width:min(980px, calc(100% - 28px));
+      margin:28px auto;
+      background:var(--white);
+      box-shadow:0 14px 45px rgba(0,0,0,.16);
+      overflow:hidden;
+    }
+    .topbar{
+      background:var(--black);
+      color:var(--white);
+      padding:30px 42px 26px;
+      text-align:center;
+    }
+    .logo{
+      font-size:39px;
+      letter-spacing:3px;
+      font-weight:300;
+      line-height:1;
+    }
+    .logo strong{font-weight:800}
+    .claim{
+      margin-top:10px;
+      font-size:12px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+    }
+    .content{padding:38px 44px 42px}
+    .hero{
+      display:grid;
+      grid-template-columns:1.35fr .65fr;
+      gap:35px;
+      align-items:start;
+      padding-bottom:28px;
+      border-bottom:1px solid #aaa;
+    }
+    h1{
+      font-size:43px;
+      line-height:1.05;
+      margin:0 0 8px;
+      letter-spacing:1px;
+    }
+    .subtitle{
+      font-size:20px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      margin:0 0 25px;
+    }
+    .intro{
+      margin:0;
+      line-height:1.6;
+      max-width:620px;
+    }
+    .services{
+      border-left:1px solid #aaa;
+      padding-left:28px;
+      display:grid;
+      gap:15px;
+    }
+    .service b{
+      display:block;
+      font-size:13px;
+      text-transform:uppercase;
+    }
+    .service span{font-size:12px;color:#555}
+    .section{margin-top:30px}
+    .section-title{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:18px;
+    }
+    .number{
+      display:inline-grid;
+      place-items:center;
+      width:28px;
+      height:28px;
+      background:var(--black);
+      color:var(--white);
+      font-weight:bold;
+    }
+    .section-title h2{
+      margin:0;
+      font-size:20px;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      white-space:nowrap;
+    }
+    .line{height:1px;background:#777;width:100%}
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px 24px;
+    }
+    .full{grid-column:1 / -1}
+    label{
+      display:block;
+      margin-bottom:7px;
+      font-size:12px;
+      font-weight:bold;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+    }
+    input, select, textarea{
+      width:100%;
+      border:1px solid #aaa;
+      background:#fff;
+      color:#111;
+      padding:13px 14px;
+      font-size:15px;
+      outline:none;
+      border-radius:0;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color:#000;
+      box-shadow:0 0 0 1px #000;
+    }
+    textarea{min-height:112px;resize:vertical}
+    .choice-cards{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+    }
+    .choice-card{
+      border:1px solid #bbb;
+      padding:16px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      min-height:96px;
+      cursor:pointer;
+    }
+    .choice-card input{width:auto;margin-top:3px;accent-color:#000}
+    .choice-card b{display:block;margin-bottom:5px}
+    .choice-card span{font-size:13px;line-height:1.35;color:#555}
+    .choice-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px 24px;
+      padding:8px 0;
+    }
+    .choice-row label{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin:0;
+      text-transform:none;
+      font-size:14px;
+      font-weight:normal;
+      letter-spacing:0;
+    }
+    .choice-row input{width:auto;accent-color:#000}
+    .upload{
+      border:1px dashed #555;
+      background:#fafafa;
+      padding:22px;
+    }
+    .upload input{border:0;padding:0}
+    .help{
+      font-size:12px;
+      color:#555;
+      margin-top:8px;
+      line-height:1.5;
+    }
+    .privacy{
+      margin-top:22px;
+      display:flex;
+      gap:9px;
+      align-items:flex-start;
+      font-size:12px;
+      line-height:1.5;
+    }
+    .privacy input{width:auto;margin-top:2px;accent-color:#000}
+    .actions{
+      margin-top:26px;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    button{
+      padding:15px 24px;
+      border:1px solid #000;
+      font-weight:bold;
+      text-transform:uppercase;
+      letter-spacing:.8px;
+      cursor:pointer;
+    }
+    .primary{background:#000;color:#fff;min-width:260px}
+    .secondary{background:#fff;color:#000}
+    .notice{
+      display:none;
+      margin-top:18px;
+      padding:13px;
+      border:1px solid #000;
+      text-align:center;
+      font-weight:bold;
+    }
+    footer{
+      background:#000;
+      color:#fff;
+      padding:24px 35px;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:14px;
+      font-size:13px;
+    }
+    footer a{color:#fff;text-decoration:none}
+    @media (max-width:760px){
+      .content{padding:28px 22px 34px}
+      .topbar{padding:25px 20px}
+      .logo{font-size:30px}
+      .hero{grid-template-columns:1fr}
+      .services{border-left:0;border-top:1px solid #aaa;padding:20px 0 0}
+      .grid,.choice-cards{grid-template-columns:1fr}
+      .full{grid-column:auto}
+      h1{font-size:34px}
+      footer{display:block;line-height:2}
+    }
+    @media print{
+      body{background:#fff}
+      .page{width:100%;margin:0;box-shadow:none}
+      .actions,.notice{display:none!important}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="logo">LADURNER<strong>1970</strong></div>
+      <div class="claim">Workwear · Merch · Textil · Stick &amp; Druck</div>
+    </header>
+
+    <div class="content">
+      <section class="hero">
+        <div>
+          <h1>ANFRAGEFORMULAR</h1>
+          <p class="subtitle">Artikel · Druck · Stick · Veredelung</p>
+          <p class="intro">
+            Bitte füllen Sie die folgenden Felder aus. Ihre Anfrage ist unverbindlich.
+            Wir melden uns schnellstmöglich mit einer passenden Empfehlung oder einem Angebot.
+          </p>
+        </div>
+        <div class="services">
+          <div class="service"><b>Arbeitsbekleidung</b><span>für jede Branche</span></div>
+          <div class="service"><b>Merch &amp; Textilien</b><span>für Firmen, Vereine und Events</span></div>
+          <div class="service"><b>Stick · Druck · Laser</b><span>hochwertig und professionell</span></div>
+          <div class="service"><b>Sonderanfertigungen</b><span>individuell und flexibel</span></div>
+        </div>
+      </section>
+
+      <form id="requestForm">
+        <section class="section">
+          <div class="section-title"><span class="number">1</span><h2>Kundendaten</h2><span class="line"></span></div>
+          <div class="grid">
+            <div>
+              <label for="vorname">Vorname *</label>
+              <input id="vorname" name="vorname" required="">
+            </div>
+            <div>
+              <label for="nachname">Nachname *</label>
+              <input id="nachname" name="nachname" required="">
+            </div>
+            <div>
+              <label for="firma">Firma / Verein</label>
+              <input id="firma" name="firma">
+            </div>
+            <div>
+              <label for="email">E-Mail *</label>
+              <input id="email" name="email" type="email" required="">
+            </div>
+            <div>
+              <label for="telefon">Telefon *</label>
+              <input id="telefon" name="telefon" type="tel" required="">
+            </div>
+            <div>
+              <label for="adresse">Adresse</label>
+              <input id="adresse" name="adresse">
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title"><span class="number">2</span><h2>Art der Anfrage</h2><span class="line"></span></div>
+          <div class="choice-cards">
+            <label class="choice-card">
+              <input type="checkbox" name="anfrageart" value="Artikel">
+              <span><b>Artikel</b><span>Ich suche bestimmte Artikel oder Sortimente.</span></span>
+            </label>
+            <label class="choice-card">
+              <input type="checkbox" name="anfrageart" value="Druck">
+              <span><b>Druck</b><span>Ich möchte Artikel mit Druck veredeln lassen.</span></span>
+            </label>
+            <label class="choice-card">
+              <input type="checkbox" name="anfrageart" value="Stick">
+              <span><b>Stick</b><span>Ich möchte Artikel mit Stick veredeln lassen.</span></span>
+            </label>
+          </div>
+          <div class="grid" style="margin-top:18px">
+            <div>
+              <label for="liefertermin">Gewünschter Liefertermin</label>
+              <input id="liefertermin" name="liefertermin" type="date">
+            </div>
+            <div>
+              <label for="budget">Ungefähres Budget</label>
+              <input id="budget" name="budget" placeholder="z. B. 1.500 €">
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title"><span class="number">3</span><h2>Details zur Anfrage</h2><span class="line"></span></div>
+          <div class="grid">
+            <div>
+              <label for="artikel">Gewünschter Artikel / Produkt *</label>
+              <textarea id="artikel" name="artikel" required="" placeholder="Bitte beschreiben Sie den gewünschten Artikel möglichst genau."></textarea>
+            </div>
+            <div>
+              <label for="farben">Farben</label>
+              <textarea id="farben" name="farben" placeholder="Welche Farben wünschen Sie?"></textarea>
+            </div>
+            <div>
+              <label for="mengen">Mengen und Größen</label>
+              <textarea id="mengen" name="mengen" placeholder="Bitte Stückzahlen und Größen angeben."></textarea>
+            </div>
+            <div>
+              <label for="veredelung">Druck / Stick / Veredelung</label>
+              <textarea id="veredelung" name="veredelung" placeholder="Platzierung, Größe, Farben und weitere Details."></textarea>
+            </div>
+            <div class="full">
+              <label for="notizen">Sonstige Wünsche oder Informationen</label>
+              <textarea id="notizen" name="notizen"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title"><span class="number">4</span><h2>Dateien hochladen</h2><span class="line"></span></div>
+          <div class="upload">
+            <label for="dateien">Logos, Designs, Skizzen oder Referenzbilder</label>
+            <input id="dateien" name="dateien" type="file" accept=".jpg,.jpeg,.png,.pdf,.ai,.eps,.svg" multiple="">
+            <div class="help">
+              Hinweis: Beim reinen Betrieb über GitHub Pages werden Dateien nicht automatisch versendet.
+              Für echten E-Mail-Versand kann später Formspree, Web3Forms oder ein eigenes Formular-Backend eingebunden werden.
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title"><span class="number">5</span><h2>Kontaktwunsch</h2><span class="line"></span></div>
+          <div class="choice-row">
+            <label><input type="checkbox" name="kontakt" value="Telefon"> Bitte telefonisch kontaktieren</label>
+            <label><input type="checkbox" name="kontakt" value="E-Mail"> Bitte per E-Mail kontaktieren</label>
+            <label><input type="checkbox" name="kontakt" value="Termin"> Ich wünsche einen Beratungstermin</label>
+          </div>
+
+          <label class="privacy">
+            <input id="datenschutz" type="checkbox" required="">
+            <span>Ich stimme der Verarbeitung meiner Angaben zur Bearbeitung dieser Anfrage zu. *</span>
+          </label>
+
+          <div class="actions">
+            <button type="button" class="primary" onclick="createMail()">Anfrage per E-Mail senden</button>
+            <button type="button" class="secondary" onclick="window.print()">Als PDF speichern</button>
+            <button type="reset" class="secondary">Formular leeren</button>
+          </div>
+          <div id="notice" class="notice"></div>
+        </section>
+      </form>
+    </div>
+
+    <footer>
+      <div><strong>LADURNER1970</strong></div>
+      <div>Tel. <a href="tel:+390474830071">+39 0474 830 071</a></div>
+      <div><a href="mailto:info@ladurner1970.com">info@ladurner1970.com</a></div>
+      <div><a href="https://www.ladurner1970.com/">www.ladurner1970.com</a></div>
+    </footer>
+  </main>
+
+  <script>
+    function valuesByName(name){
+      return [...document.querySelectorAll('[name="' + name + '"]:checked')]
+        .map(el => el.value).join(', ');
+    }
+
+    function createMail(){
+      const form = document.getElementById('requestForm');
+      const notice = document.getElementById('notice');
+
+      if(!form.reportValidity()) return;
+
+      const data = new FormData(form);
+      const subject = 'Neue Anfrage über Ladurner1970 – ' +
+        (data.get('firma') || data.get('vorname') + ' ' + data.get('nachname'));
+
+      const body = [
+        'NEUE ANFRAGE ÜBER LADURNER1970',
+        '',
+        'KUNDENDATEN',
+        'Name: ' + data.get('vorname') + ' ' + data.get('nachname'),
+        'Firma/Verein: ' + (data.get('firma') || '-'),
+        'E-Mail: ' + data.get('email'),
+        'Telefon: ' + data.get('telefon'),
+        'Adresse: ' + (data.get('adresse') || '-'),
+        '',
+        'ANFRAGE',
+        'Art: ' + (valuesByName('anfrageart') || '-'),
+        'Liefertermin: ' + (data.get('liefertermin') || '-'),
+        'Budget: ' + (data.get('budget') || '-'),
+        '',
+        'Artikel/Produkt:',
+        data.get('artikel') || '-',
+        '',
+        'Farben:',
+        data.get('farben') || '-',
+        '',
+        'Mengen und Größen:',
+        data.get('mengen') || '-',
+        '',
+        'Druck / Stick / Veredelung:',
+        data.get('veredelung') || '-',
+        '',
+        'Weitere Informationen:',
+        data.get('notizen') || '-',
+        '',
+        'Kontaktwunsch: ' + (valuesByName('kontakt') || '-'),
+        '',
+        'Hinweis: Ausgewählte Dateien müssen der E-Mail manuell als Anhang beigefügt werden.'
+      ].join('\n');
+
+      notice.style.display = 'block';
+      notice.textContent = 'Ihr E-Mail-Programm wird geöffnet. Bitte ausgewählte Dateien manuell anhängen und die Nachricht absenden.';
+
+      window.location.href =
+        'mailto:info@ladurner1970.com?subject=' +
+        encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(body);
+    }
+  </script>
+
+
+</body></html>
