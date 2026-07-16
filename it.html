@@ -259,8 +259,6 @@ textarea{min-height:112px;resize:vertical}
 .catalog-link-row{
   margin-top:28px;
   padding-top:4px;
-  margin-left:44px;
-  margin-right:44px;
 }
 .catalog-link-row label{
   margin-bottom:8px;
@@ -268,8 +266,6 @@ textarea{min-height:112px;resize:vertical}
 .details-section{
   margin-top:34px;
   padding-top:4px;
-  margin-left:44px;
-  margin-right:44px;
 }
 .details-section .section-title{
   margin-bottom:22px;
@@ -382,8 +378,74 @@ footer a{color:#fff;text-decoration:none}
 @media(max-width:760px){
   .catalog-link-row,
   .details-section{
-    margin-left:22px;
-    margin-right:22px;
+  }
+}
+
+
+/* Finale einheitliche Ausrichtung aller Formularbereiche */
+#requestForm{
+  width:100%;
+  margin:0;
+  padding:0;
+}
+#requestForm > .section{
+  width:100%;
+  margin-left:0 !important;
+  margin-right:0 !important;
+  padding-left:0 !important;
+  padding-right:0 !important;
+}
+#requestForm .catalog-link-row{
+  width:100%;
+  margin:24px 0 0 !important;
+  padding:0 !important;
+}
+#requestForm .details-section{
+  width:100%;
+  margin:34px 0 0 !important;
+  padding:0 !important;
+}
+#requestForm .section-title{
+  width:100%;
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
+#requestForm .grid{
+  width:100%;
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
+#requestForm .full{
+  width:100%;
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
+#requestForm .upload{
+  width:100%;
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
+#requestForm .choice-row,
+#requestForm .privacy,
+#requestForm .actions,
+#requestForm .whatsapp-note,
+#requestForm .status{
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
+#requestForm input,
+#requestForm textarea,
+#requestForm select{
+  max-width:100%;
+}
+@media(max-width:760px){
+  #requestForm > .section,
+  #requestForm .catalog-link-row,
+  #requestForm .details-section{
+    margin-left:0 !important;
+    margin-right:0 !important;
+    padding-left:0 !important;
+    padding-right:0 !important;
   }
 }
 

@@ -80,3 +80,9 @@ LAYOUT-OPTIMIERUNG:
 - Details zur Anfrage als sauber getrennte Sektion formatiert.
 - Textfelder einheitlich vergrößert.
 - Überflüssiger Hilfetext unter der Artikelauswahl entfernt.
+
+FINALE AUSRICHTUNG:
+- Produkt-/Kataloglink, Details, Dateiupload und Kontaktbereich einheitlich ausgerichtet.
+- Alle Überschriften und Felder beginnen auf derselben Linie.
+- Desktop- und Mobilansicht korrigiert.
+- Keine Funktionen oder Inhalte verändert.
