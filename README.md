@@ -133,3 +133,11 @@ VERSION 1.0 FINAL – DATEIUPLOAD NEU:
 - Der Web3Forms-Client wird genau einmal geladen.
 - Alte, kollidierende Dateilisten-Logik entfernt.
 - Bestehende Formular-, WhatsApp- und PDF-Funktionen bleiben erhalten.
+
+
+WHATSAPP- UND LAYOUT-FIX:
+- Abschnitt 6 wieder korrekt innerhalb des Formular- und Inhaltsbereichs.
+- WhatsApp öffnet über wa.me im selben Browserfenster.
+- Für WhatsApp ist nur die Zustimmung zur Datenverarbeitung erforderlich.
+- Fehlende E-Mail, Artikelbeschreibung oder Artikelcode blockieren WhatsApp nicht mehr.
+- Mobile Kontaktbuttons stehen sauber untereinander.
