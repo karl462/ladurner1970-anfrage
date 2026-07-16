@@ -121,6 +121,8 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
   }
 }
 
+
+.catalog-hide-field.is-hidden{display:none!important}
 </style>
 </head>
 <body>
@@ -185,9 +187,9 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 <section class="section details-section">
 <div class="section-title"><span class="number">4</span><h2>Details zur Anfrage</h2><span class="line"></span></div>
 <div class="grid">
-<div><label for="artikel">Beschreibung Ihrer Anfrage *</label><textarea id="artikel" name="Gewünschter Artikel / Produkt" placeholder="Beschreiben Sie den gewünschten Artikel, die Sonderproduktion oder Ihre Idee möglichst genau." required=""></textarea></div>
-<div><label for="farben">Farben</label><textarea id="farben" name="Farben" placeholder="Welche Farben wünschen Sie?"></textarea></div>
-<div><label for="mengen">Mengen und Größen</label><textarea id="mengen" name="Mengen und Größen" placeholder="Bitte Stückzahlen und Größen angeben."></textarea></div>
+<div class="catalog-hide-field"><label for="artikel">Beschreibung Ihrer Anfrage *</label><textarea id="artikel" name="Gewünschter Artikel / Produkt" placeholder="Beschreiben Sie den gewünschten Artikel, die Sonderproduktion oder Ihre Idee möglichst genau." required=""></textarea></div>
+<div class="catalog-hide-field"><label for="farben">Farben</label><textarea id="farben" name="Farben" placeholder="Welche Farben wünschen Sie?"></textarea></div>
+<div class="catalog-hide-field"><label for="mengen">Mengen und Größen</label><textarea id="mengen" name="Mengen und Größen" placeholder="Bitte Stückzahlen und Größen angeben."></textarea></div>
 <div><label for="veredelung">Druck / Stick / Veredelung</label><textarea id="veredelung" name="Druck / Stick / Veredelung" placeholder="Platzierung, Größe, Farben und weitere Details."></textarea></div>
 <div class="full"><label for="notizen">Sonstige Wünsche oder Informationen</label><textarea id="notizen" name="Sonstige Wünsche oder Informationen"></textarea></div>
 </div>
@@ -249,6 +251,22 @@ function fieldValue(id){
 
 const catalogSection = document.getElementById('catalogSection');
 const requestModeInputs = [...document.querySelectorAll('input[name="Art der Anfrage"]')];
+
+function updateCatalogDetailVisibility() {
+  const selectedMode = requestModeInputs.find(input => input.checked);
+  const hideCatalogDuplicateFields = selectedMode && selectedMode.value === 'Katalogartikel';
+
+  document.querySelectorAll('.catalog-hide-field').forEach(field => {
+    field.classList.toggle('is-hidden', hideCatalogDuplicateFields);
+  });
+}
+
+requestModeInputs.forEach(input => {
+  input.addEventListener('change', updateCatalogDetailVisibility);
+});
+
+updateCatalogDetailVisibility();
+
 const emailInput = document.getElementById('email');
 const privacyInput = document.getElementById('datenschutz');
 

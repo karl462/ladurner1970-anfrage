@@ -121,6 +121,8 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
   }
 }
 
+
+.catalog-hide-field.is-hidden{display:none!important}
 </style>
 </head>
 <body>
@@ -185,9 +187,9 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 <section class="section details-section">
 <div class="section-title"><span class="number">4</span><h2>Dettagli della richiesta</h2><span class="line"></span></div>
 <div class="grid">
-<div><label for="artikel">Descrizione della richiesta *</label><textarea id="artikel" name="Articolo / prodotto desiderato" placeholder="Descriva il più precisamente possibile l'articolo desiderato." required=""></textarea></div>
-<div><label for="farben">Colori</label><textarea id="farben" name="Colori" placeholder="Quali colori desidera?"></textarea></div>
-<div><label for="mengen">Quantità e taglie</label><textarea id="mengen" name="Quantità e taglie" placeholder="Indichi quantità e taglie."></textarea></div>
+<div class="catalog-hide-field"><label for="artikel">Descrizione della richiesta *</label><textarea id="artikel" name="Articolo / prodotto desiderato" placeholder="Descriva il più precisamente possibile l'articolo desiderato." required=""></textarea></div>
+<div class="catalog-hide-field"><label for="farben">Colori</label><textarea id="farben" name="Colori" placeholder="Quali colori desidera?"></textarea></div>
+<div class="catalog-hide-field"><label for="mengen">Quantità e taglie</label><textarea id="mengen" name="Quantità e taglie" placeholder="Indichi quantità e taglie."></textarea></div>
 <div><label for="veredelung">Stampa / Ricamo / Personalizzazione</label><textarea id="veredelung" name="Stampa / Ricamo / Personalizzazione" placeholder="Posizione, dimensioni, colori e ulteriori dettagli."></textarea></div>
 <div class="full"><label for="notizen">Altre richieste o informazioni</label><textarea id="notizen" name="Altre richieste o informazioni"></textarea></div>
 </div>
@@ -249,6 +251,22 @@ function fieldValue(id){
 
 const catalogSection = document.getElementById('catalogSection');
 const requestModeInputs = [...document.querySelectorAll('input[name="Tipo di richiesta"]')];
+
+function updateCatalogDetailVisibility() {
+  const selectedMode = requestModeInputs.find(input => input.checked);
+  const hideCatalogDuplicateFields = selectedMode && selectedMode.value === 'Articolo da catalogo';
+
+  document.querySelectorAll('.catalog-hide-field').forEach(field => {
+    field.classList.toggle('is-hidden', hideCatalogDuplicateFields);
+  });
+}
+
+requestModeInputs.forEach(input => {
+  input.addEventListener('change', updateCatalogDetailVisibility);
+});
+
+updateCatalogDetailVisibility();
+
 const emailInput = document.getElementById('email');
 const privacyInput = document.getElementById('datenschutz');
 

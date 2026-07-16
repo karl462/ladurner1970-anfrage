@@ -148,3 +148,13 @@ E-MAIL-FIX FÜR IPHONE:
 - E-Mail ist nur beim normalen E-Mail-Formularversand erforderlich.
 - WhatsApp bleibt ohne E-Mail-Adresse nutzbar.
 - Alte Fehlermeldungen werden bei Eingabe, Autofill, Änderung und Verlassen des Feldes gelöscht.
+
+
+MINIMALE SICHTBARKEITSANPASSUNG:
+- Bei „Artikel aus dem Katalog“ werden nur folgende Felder ausgeblendet:
+  - Gewünschter Artikel / Produkt
+  - Farben
+  - Mengen und Größen
+- Druck / Stick / Veredelung und Sonstige Wünsche bleiben sichtbar.
+- Bei Sonderproduktion sowie Idee / Beratung erscheinen alle Felder wieder.
+- Keine Versand-, Upload-, WhatsApp-, PDF- oder Layoutfunktion verändert.
