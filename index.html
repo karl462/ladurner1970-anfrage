@@ -212,15 +212,15 @@ textarea{min-height:112px;resize:vertical}
 .catalog-link:hover{opacity:.86}
 
 
-.article-list{display:grid;gap:16px}
+.article-list{display:grid;gap:18px}
 .article-group{
-  border:1px solid #bbb;
+  border:1px solid #bdbdbd;
   background:#fafafa;
   padding:16px;
 }
 .article-head{
   display:grid;
-  grid-template-columns:1fr 44px;
+  grid-template-columns:minmax(0,1fr) 44px;
   gap:10px;
   align-items:end;
   margin-bottom:14px;
@@ -228,10 +228,10 @@ textarea{min-height:112px;resize:vertical}
 .variant-list{display:grid;gap:10px}
 .variant-row{
   display:grid;
-  grid-template-columns:1fr 1fr 100px 44px;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr) 110px 44px;
   gap:10px;
   align-items:end;
-  padding-top:10px;
+  padding-top:12px;
   border-top:1px solid #ddd;
 }
 .article-group label{margin-bottom:5px}
@@ -243,16 +243,25 @@ textarea{min-height:112px;resize:vertical}
   color:#000;
   border:1px solid #999;
   font-size:20px;
+  line-height:1;
 }
 .add-article,.add-variant{
   margin-top:12px;
   background:#fff;
   color:#000;
 }
+.article-help{
+  margin-top:10px;
+  font-size:12px;
+  color:#555;
+  line-height:1.5;
+}
+.catalog-link-row{
+  margin-top:22px;
+}
 @media(max-width:760px){
   .article-head{grid-template-columns:1fr}
-  .variant-row{grid-template-columns:1fr 1fr}
-  .variant-row .variant-qty{grid-column:1/-1}
+  .variant-row{grid-template-columns:1fr}
   .remove-article,.remove-variant{width:100%}
 }
 
@@ -262,6 +271,9 @@ textarea{min-height:112px;resize:vertical}
   padding:22px;
 }
 .upload input{border:0;padding:0}
+.selected-files{margin-top:14px;padding:12px;border:1px solid #ccc;background:#fff;font-size:13px;line-height:1.6}
+.selected-files strong{display:block;margin-bottom:5px;text-transform:uppercase;font-size:12px}
+.selected-files ul{margin:6px 0 0;padding-left:18px}
 .help{
   font-size:12px;
   color:#555;
@@ -367,7 +379,7 @@ footer a{color:#fff;text-decoration:none}
 <div class="services"><div class="service"><b>Arbeitsbekleidung</b><span>für jede Branche</span></div><div class="service"><b>Merch & Textilien</b><span>für Firmen, Vereine und Events</span></div><div class="service"><b>Stick · Druck · Laser</b><span>hochwertig und professionell</span></div><div class="service"><b>Sonderanfertigungen</b><span>individuell und flexibel</span></div></div>
 </section>
 
-<form id="requestForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+<form id="requestForm" action="https://api.web3forms.com/submit" method="POST">
 <input type="hidden" name="access_key" value="ee63fe36-28fb-40d8-bf5a-553b97c9b31f">
 <input type="hidden" name="subject" value="Neue Anfrage über Ladurner1970">
 <input type="hidden" name="from_name" value="Ladurner1970 Anfrageformular">
@@ -429,7 +441,7 @@ footer a{color:#fff;text-decoration:none}
             <label>Größe *</label>
             <input class="variant-size-input" type="text" required placeholder="z. B. M">
           </div>
-          <div class="variant-qty">
+          <div>
             <label>Menge *</label>
             <input class="variant-qty-input" type="number" min="1" required placeholder="10">
           </div>
@@ -441,9 +453,9 @@ footer a{color:#fff;text-decoration:none}
   </div>
   <button type="button" id="addArticle" class="secondary add-article">+ Weiteren Artikel hinzufügen</button>
   <input type="hidden" id="articleSummary" name="Artikel / Farben / Größen / Mengen">
-  <div class="help">Den Artikelcode nur einmal eingeben. Danach können mehrere Farben, Größen und Mengen zu diesem Artikel ergänzt werden.</div>
+  <div class="article-help">Den Artikelcode nur einmal eingeben. Danach können mehrere Farben, Größen und Mengen zu diesem Artikel ergänzt werden.</div>
 </div>
-  <button type="button" id="addArticle" class="secondary add-article">+ Weiteren Artikel hinzufügen</button>
+  
   <input type="hidden" id="articleSummary" name="Artikel / Farben / Größen / Mengen">
   <div class="help">Für jeden Artikel bitte Artikelcode, Farbe, Größe und Menge eintragen.</div>
 </div>
@@ -466,9 +478,10 @@ footer a{color:#fff;text-decoration:none}
 <section class="section">
 <div class="section-title"><span class="number">5</span><h2>Dateien hochladen</h2><span class="line"></span></div>
 <div class="upload">
-<label for="attachment">Logo, Design, PDF oder Referenzbild</label>
-<input id="attachment" name="attachment" type="file" accept=".jpg,.jpeg,.png,.pdf,.ai,.eps,.svg,.zip">
-<div class="help">Logo, Druckdatei oder PDF hochladen. Erlaubte Formate: JPG, PNG, PDF, AI, EPS, SVG und ZIP. Die Datei wird bei Versand per E-Mail als Anhang mitgesendet.</div>
+<label for="attachment">Logos, Druckdateien und Dokumente</label>
+<input id="attachment" name="attachment" type="file" data-advanced="true" multiple data-max-files="8" data-max-file-size="10MB" accept=".jpg,.jpeg,.png,.pdf,.ai,.eps,.svg,.zip,.dst,.emb" data-content="Dateien hierher ziehen oder auswählen">
+<div class="help"><strong>Mehrfachauswahl möglich:</strong> bis zu 8 Dateien mit jeweils maximal 10 MB. Unterstützt werden JPG, PNG, PDF, AI, EPS, SVG, ZIP, DST und EMB. Die Dateien werden bei Versand per E-Mail als Anhänge mitgesendet.</div>
+<div class="selected-files" id="selectedFiles"><strong>Ausgewählte Dateien</strong><div id="selectedFileNames">Noch keine Dateien ausgewählt.</div></div>
 </div>
 </section>
 
@@ -486,7 +499,7 @@ footer a{color:#fff;text-decoration:none}
 <button type="button" class="secondary" onclick="window.print()">Als PDF speichern</button>
 <button type="reset" class="secondary">Formular leeren</button>
 </div>
-<div class="help whatsapp-note"><strong>Hinweis WhatsApp:</strong> Nach dem Öffnen von WhatsApp können Sie Ihr Logo oder Ihre Datei ganz einfach über die Büroklammer 📎 anhängen.</div>
+<div class="help whatsapp-note"><strong>Hinweis WhatsApp:</strong> Text und Dateinamen werden vorbereitet. Die ausgewählten Logos oder Dateien müssen nach dem Öffnen von WhatsApp über die Büroklammer 📎 manuell angehängt werden.</div>
 <div id="status" class="status"></div>
 </section>
 </form>
@@ -502,6 +515,28 @@ footer a{color:#fff;text-decoration:none}
 
 <script>
 const form = document.getElementById('requestForm');
+
+const attachmentInput = document.getElementById('attachment');
+const selectedFileNames = document.getElementById('selectedFileNames');
+
+function updateSelectedFiles() {
+  const files = [...attachmentInput.files];
+  if (!files.length) {
+    selectedFileNames.textContent = 'Noch keine Dateien ausgewählt.';
+    return;
+  }
+  const list = document.createElement('ul');
+  files.forEach(file => {
+    const item = document.createElement('li');
+    const sizeMB = (file.size / 1024 / 1024).toFixed(2);
+    item.textContent = `${file.name} (${sizeMB} MB)`;
+    list.appendChild(item);
+  });
+  selectedFileNames.replaceChildren(list);
+}
+
+attachmentInput.addEventListener('change', updateSelectedFiles);
+
 const statusBox = document.getElementById('status');
 const labels = {"name": "Name", "company": "Firma/Verein", "email": "E-Mail", "phone": "Telefon", "address": "Adresse", "type": "Art der Anfrage", "delivery": "Liefertermin", "budget": "Budget", "product": "Artikel/Produkt", "colors": "Farben", "qty": "Mengen und Größen", "refine": "Druck/Stick/Veredelung", "notes": "Weitere Informationen", "contact": "Kontaktwunsch", "catalog": "Katalog/Marke", "articleNo": "Artikelnummern / Artikelcodes", "catalogLink": "Produkt-/Kataloglink"};
 
@@ -540,6 +575,10 @@ function updateArticleSummary() {
   return articleSummary.value;
 }
 
+function resetVariantRow(row) {
+  row.querySelectorAll('input').forEach(input => input.value = '');
+}
+
 function bindVariantRow(row) {
   row.querySelector('.remove-variant').addEventListener('click', () => {
     const group = row.closest('.article-group');
@@ -547,7 +586,7 @@ function bindVariantRow(row) {
     if (rows.length > 1) {
       row.remove();
     } else {
-      row.querySelectorAll('input').forEach(input => input.value = '');
+      resetVariantRow(row);
     }
     updateArticleSummary();
   });
@@ -561,23 +600,21 @@ function bindArticleGroup(group) {
       group.remove();
     } else {
       group.querySelector('.article-code-input').value = '';
-      group.querySelectorAll('.variant-row').forEach((row, index) => {
-        if (index > 0) row.remove();
-      });
-      group.querySelectorAll('.variant-row input').forEach(input => input.value = '');
+      const rows = [...group.querySelectorAll('.variant-row')];
+      rows.slice(1).forEach(row => row.remove());
+      resetVariantRow(rows[0]);
     }
     updateArticleSummary();
   });
 
   group.querySelector('.article-code-input').addEventListener('input', updateArticleSummary);
-
   group.querySelectorAll('.variant-row').forEach(bindVariantRow);
 
   group.querySelector('.add-variant').addEventListener('click', () => {
     const variantList = group.querySelector('.variant-list');
-    const firstVariant = variantList.querySelector('.variant-row');
-    const newVariant = firstVariant.cloneNode(true);
-    newVariant.querySelectorAll('input').forEach(input => input.value = '');
+    const template = variantList.querySelector('.variant-row');
+    const newVariant = template.cloneNode(true);
+    resetVariantRow(newVariant);
     variantList.appendChild(newVariant);
     bindVariantRow(newVariant);
     newVariant.querySelector('.variant-color-input').focus();
@@ -587,12 +624,12 @@ function bindArticleGroup(group) {
 articleList.querySelectorAll('.article-group').forEach(bindArticleGroup);
 
 addArticleButton.addEventListener('click', () => {
-  const firstGroup = articleList.querySelector('.article-group');
-  const newGroup = firstGroup.cloneNode(true);
-  newGroup.querySelectorAll('input').forEach(input => input.value = '');
-  newGroup.querySelectorAll('.variant-row').forEach((row, index) => {
-    if (index > 0) row.remove();
-  });
+  const template = articleList.querySelector('.article-group');
+  const newGroup = template.cloneNode(true);
+  newGroup.querySelector('.article-code-input').value = '';
+  const rows = [...newGroup.querySelectorAll('.variant-row')];
+  rows.slice(1).forEach(row => row.remove());
+  resetVariantRow(rows[0]);
   articleList.appendChild(newGroup);
   bindArticleGroup(newGroup);
   newGroup.querySelector('.article-code-input').focus();
@@ -624,7 +661,7 @@ document.getElementById('whatsappSend').addEventListener('click', () => {
   const qty = fieldValue('mengen');
   const refine = fieldValue('veredelung');
   const notes = fieldValue('notizen');
-  const selectedFile = document.getElementById('attachment').files[0];
+  const selectedFiles = [...document.getElementById('attachment').files];
   const articleDetails = updateArticleSummary();
   const typeName = "Art der Anfrage";
   const contactName = "Kontaktwunsch";
@@ -664,11 +701,12 @@ document.getElementById('whatsappSend').addEventListener('click', () => {
     notes || '-',
     '',
     labels.contact + ': ' + (contact || '-'),
-    'Ausgewählte Datei: ' + (selectedFile ? selectedFile.name : '-')
+    'Ausgewählte Dateien: ' + (selectedFiles.length ? selectedFiles.map(file => file.name).join(', ') : '-')
   ].join('\n');
 
   window.open('https://wa.me/393355206498?text=' + encodeURIComponent(msg), '_blank', 'noopener');
 });
 </script>
+<script src="https://web3forms.com/client/script.js" async defer></script>
 </body>
 </html>
