@@ -205,6 +205,12 @@ textarea{min-height:112px;resize:vertical}
   letter-spacing:0;
 }
 .choice-row input{width:auto;accent-color:#000}
+
+.catalog-box{border:1px solid #aaa;background:#fafafa;padding:22px;margin-bottom:18px}
+.catalog-box p{margin:0 0 14px;line-height:1.55}
+.catalog-link{display:inline-block;background:#000;color:#fff;text-decoration:none;padding:13px 18px;font-weight:bold;text-transform:uppercase;letter-spacing:.6px}
+.catalog-link:hover{opacity:.86}
+
 .upload{
   border:1px dashed #555;
   background:#fafafa;
@@ -348,7 +354,20 @@ footer a{color:#fff;text-decoration:none}
 </section>
 
 <section class="section">
-<div class="section-title"><span class="number">3</span><h2>Details zur Anfrage</h2><span class="line"></span></div>
+<div class="section-title"><span class="number">3</span><h2>Katalog und Artikelnummer</h2><span class="line"></span></div>
+<div class="catalog-box">
+<p>Öffnen Sie unsere Katalogübersicht, wählen Sie den gewünschten Katalog und notieren Sie bitte unbedingt die genaue Artikelnummer.</p>
+<a class="catalog-link" href="https://www.yumpu.com/kiosk/Ladurner1970" target="_blank" rel="noopener">Kataloge ansehen</a>
+</div>
+<div class="grid">
+<div><label for="katalog">Katalog / Marke *</label><input id="katalog" name="Katalog / Marke" required placeholder="z. B. Arbeitsbekleidung, Textilien, Werbeartikel"></div>
+<div><label for="artikelnummer">Artikelnummer *</label><input id="artikelnummer" name="Artikelnummer" required placeholder="Genaue Artikelnummer laut Katalog"></div>
+<div class="full"><label for="kataloglink">Produkt- oder Kataloglink</label><input id="kataloglink" name="Produkt- oder Kataloglink" type="url" placeholder="Optional: Link zur Katalogseite oder zum Produkt"></div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-title"><span class="number">4</span><h2>Details zur Anfrage</h2><span class="line"></span></div>
 <div class="grid">
 <div><label for="artikel">Gewünschter Artikel / Produkt *</label><textarea id="artikel" name="Gewünschter Artikel / Produkt" required placeholder="Bitte beschreiben Sie den gewünschten Artikel möglichst genau."></textarea></div>
 <div><label for="farben">Farben</label><textarea id="farben" name="Farben" placeholder="Welche Farben wünschen Sie?"></textarea></div>
@@ -359,7 +378,7 @@ footer a{color:#fff;text-decoration:none}
 </section>
 
 <section class="section">
-<div class="section-title"><span class="number">4</span><h2>Dateien hochladen</h2><span class="line"></span></div>
+<div class="section-title"><span class="number">5</span><h2>Dateien hochladen</h2><span class="line"></span></div>
 <div class="upload">
 <label for="attachment">Logo, Design, PDF oder Referenzbild</label>
 <input id="attachment" name="attachment" type="file" accept=".jpg,.jpeg,.png,.pdf,.ai,.eps,.svg,.zip">
@@ -368,7 +387,7 @@ footer a{color:#fff;text-decoration:none}
 </section>
 
 <section class="section">
-<div class="section-title"><span class="number">5</span><h2>Kontaktwunsch</h2><span class="line"></span></div>
+<div class="section-title"><span class="number">6</span><h2>Kontaktwunsch</h2><span class="line"></span></div>
 <div class="choice-row">
 <label><input type="checkbox" name="Kontaktwunsch" value="Bitte telefonisch kontaktieren"> Bitte telefonisch kontaktieren</label>
 <label><input type="checkbox" name="Kontaktwunsch" value="Bitte per E-Mail kontaktieren"> Bitte per E-Mail kontaktieren</label>
@@ -397,7 +416,7 @@ footer a{color:#fff;text-decoration:none}
 <script>
 const form = document.getElementById('requestForm');
 const statusBox = document.getElementById('status');
-const labels = {"name": "Name", "company": "Firma/Verein", "email": "E-Mail", "phone": "Telefon", "address": "Adresse", "type": "Art der Anfrage", "delivery": "Liefertermin", "budget": "Budget", "product": "Artikel/Produkt", "colors": "Farben", "qty": "Mengen und Größen", "refine": "Druck/Stick/Veredelung", "notes": "Weitere Informationen", "contact": "Kontaktwunsch"};
+const labels = {"name": "Name", "company": "Firma/Verein", "email": "E-Mail", "phone": "Telefon", "address": "Adresse", "type": "Art der Anfrage", "delivery": "Liefertermin", "budget": "Budget", "product": "Artikel/Produkt", "colors": "Farben", "qty": "Mengen und Größen", "refine": "Druck/Stick/Veredelung", "notes": "Weitere Informationen", "contact": "Kontaktwunsch", "catalog": "Katalog/Marke", "articleNo": "Artikelnummer", "catalogLink": "Produkt-/Kataloglink"};
 
 function checkedValues(name){
   return [...document.querySelectorAll(`[name="${CSS.escape(name)}"]:checked`)]
@@ -425,6 +444,9 @@ document.getElementById('whatsappSend').addEventListener('click', () => {
   const address = fieldValue('adresse');
   const delivery = fieldValue('liefertermin');
   const budget = fieldValue('budget');
+  const catalog = fieldValue('katalog');
+  const articleNo = fieldValue('artikelnummer');
+  const catalogLink = fieldValue('kataloglink');
   const product = fieldValue('artikel');
   const colors = fieldValue('farben');
   const qty = fieldValue('mengen');
@@ -447,6 +469,10 @@ document.getElementById('whatsappSend').addEventListener('click', () => {
     labels.type + ': ' + (type || '-'),
     labels.delivery + ': ' + (delivery || '-'),
     labels.budget + ': ' + (budget || '-'),
+    '',
+    labels.catalog + ': ' + (catalog || '-'),
+    labels.articleNo + ': ' + (articleNo || '-'),
+    labels.catalogLink + ': ' + (catalogLink || '-'),
     '',
     labels.product + ':',
     product || '-',
