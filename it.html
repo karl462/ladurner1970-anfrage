@@ -211,6 +211,51 @@ textarea{min-height:112px;resize:vertical}
 .catalog-link{display:inline-block;background:#000;color:#fff;text-decoration:none;padding:13px 18px;font-weight:bold;text-transform:uppercase;letter-spacing:.6px}
 .catalog-link:hover{opacity:.86}
 
+
+.article-list{display:grid;gap:16px}
+.article-group{
+  border:1px solid #bbb;
+  background:#fafafa;
+  padding:16px;
+}
+.article-head{
+  display:grid;
+  grid-template-columns:1fr 44px;
+  gap:10px;
+  align-items:end;
+  margin-bottom:14px;
+}
+.variant-list{display:grid;gap:10px}
+.variant-row{
+  display:grid;
+  grid-template-columns:1fr 1fr 100px 44px;
+  gap:10px;
+  align-items:end;
+  padding-top:10px;
+  border-top:1px solid #ddd;
+}
+.article-group label{margin-bottom:5px}
+.remove-article,.remove-variant{
+  width:44px;
+  height:44px;
+  padding:0;
+  background:#fff;
+  color:#000;
+  border:1px solid #999;
+  font-size:20px;
+}
+.add-article,.add-variant{
+  margin-top:12px;
+  background:#fff;
+  color:#000;
+}
+@media(max-width:760px){
+  .article-head{grid-template-columns:1fr}
+  .variant-row{grid-template-columns:1fr 1fr}
+  .variant-row .variant-qty{grid-column:1/-1}
+  .remove-article,.remove-variant{width:100%}
+}
+
 .upload{
   border:1px dashed #555;
   background:#fafafa;
@@ -362,7 +407,47 @@ footer a{color:#fff;text-decoration:none}
 </div>
 <div class="grid">
 <div><label for="katalog">Catalogo / Marchio *</label><input id="katalog" name="Catalogo / Marchio" required placeholder="Ad es. abbigliamento da lavoro, tessili, articoli promozionali"></div>
-<div><label for="artikelnummer">Codici articolo *</label><textarea id="artikelnummer" name="Codici articolo" required placeholder="È possibile inserire più codici. Scriva ogni codice su una nuova riga, ad es.&#10;JN001&#10;JN002&#10;JN003"></textarea><div class="help">È possibile inserire più codici articolo, uno per riga oppure separati da una virgola.</div></div>
+
+<div class="full">
+  <label>Articoli con colori, taglie e quantità *</label>
+  <div id="articleList" class="article-list">
+    <div class="article-group">
+      <div class="article-head">
+        <div>
+          <label>Codice articolo *</label>
+          <input class="article-code-input" type="text" required placeholder="ad es. JN001">
+        </div>
+        <button type="button" class="remove-article" aria-label="Rimuovi articolo">×</button>
+      </div>
+      <div class="variant-list">
+        <div class="variant-row">
+          <div>
+            <label>Colore *</label>
+            <input class="variant-color-input" type="text" required placeholder="ad es. Nero">
+          </div>
+          <div>
+            <label>Taglia *</label>
+            <input class="variant-size-input" type="text" required placeholder="ad es. M">
+          </div>
+          <div class="variant-qty">
+            <label>Quantità *</label>
+            <input class="variant-qty-input" type="number" min="1" required placeholder="10">
+          </div>
+          <button type="button" class="remove-variant" aria-label="Rimuovi variante">×</button>
+        </div>
+      </div>
+      <button type="button" class="secondary add-variant">+ Aggiungi colore / taglia</button>
+    </div>
+  </div>
+  <button type="button" id="addArticle" class="secondary add-article">+ Aggiungi un altro articolo</button>
+  <input type="hidden" id="articleSummary" name="Articoli / Colori / Taglie / Quantità">
+  <div class="help">Inserisca il codice articolo una sola volta. Poi può aggiungere più colori, taglie e quantità allo stesso articolo.</div>
+</div>
+  <button type="button" id="addArticle" class="secondary add-article">+ Aggiungi un altro articolo</button>
+  <input type="hidden" id="articleSummary" name="Articoli / Colori / Taglie / Quantità">
+  <div class="help">Per ogni articolo inserisca codice, colore, taglia e quantità.</div>
+</div>
+</div>
 <div class="full"><label for="kataloglink">Link al prodotto o al catalogo</label><input id="kataloglink" name="Link al prodotto o al catalogo" type="url" placeholder="Facoltativo: link alla pagina del catalogo o al prodotto"></div>
 </div>
 </section>
@@ -430,6 +515,91 @@ function fieldValue(id){
   return el ? el.value.trim() : '';
 }
 
+
+const articleList = document.getElementById('articleList');
+const addArticleButton = document.getElementById('addArticle');
+const articleSummary = document.getElementById('articleSummary');
+
+function updateArticleSummary() {
+  const groups = [...articleList.querySelectorAll('.article-group')];
+  const sections = groups.map((group, articleIndex) => {
+    const code = group.querySelector('.article-code-input').value.trim();
+    const variants = [...group.querySelectorAll('.variant-row')].map((row, variantIndex) => {
+      const color = row.querySelector('.variant-color-input').value.trim();
+      const size = row.querySelector('.variant-size-input').value.trim();
+      const qty = row.querySelector('.variant-qty-input').value.trim();
+      return `  ${variantIndex + 1}. Colore: ${color || '-'} | Taglia: ${size || '-'} | Quantità: ${qty || '-'}`;
+    });
+    return `Articolo ${articleIndex + 1}: ${code || '-'}
+` + variants.join('
+');
+  });
+  articleSummary.value = sections.join('
+
+');
+  return articleSummary.value;
+}
+
+function bindVariantRow(row) {
+  row.querySelector('.remove-variant').addEventListener('click', () => {
+    const group = row.closest('.article-group');
+    const rows = group.querySelectorAll('.variant-row');
+    if (rows.length > 1) {
+      row.remove();
+    } else {
+      row.querySelectorAll('input').forEach(input => input.value = '');
+    }
+    updateArticleSummary();
+  });
+  row.querySelectorAll('input').forEach(input => input.addEventListener('input', updateArticleSummary));
+}
+
+function bindArticleGroup(group) {
+  group.querySelector('.remove-article').addEventListener('click', () => {
+    const groups = articleList.querySelectorAll('.article-group');
+    if (groups.length > 1) {
+      group.remove();
+    } else {
+      group.querySelector('.article-code-input').value = '';
+      group.querySelectorAll('.variant-row').forEach((row, index) => {
+        if (index > 0) row.remove();
+      });
+      group.querySelectorAll('.variant-row input').forEach(input => input.value = '');
+    }
+    updateArticleSummary();
+  });
+
+  group.querySelector('.article-code-input').addEventListener('input', updateArticleSummary);
+
+  group.querySelectorAll('.variant-row').forEach(bindVariantRow);
+
+  group.querySelector('.add-variant').addEventListener('click', () => {
+    const variantList = group.querySelector('.variant-list');
+    const firstVariant = variantList.querySelector('.variant-row');
+    const newVariant = firstVariant.cloneNode(true);
+    newVariant.querySelectorAll('input').forEach(input => input.value = '');
+    variantList.appendChild(newVariant);
+    bindVariantRow(newVariant);
+    newVariant.querySelector('.variant-color-input').focus();
+  });
+}
+
+articleList.querySelectorAll('.article-group').forEach(bindArticleGroup);
+
+addArticleButton.addEventListener('click', () => {
+  const firstGroup = articleList.querySelector('.article-group');
+  const newGroup = firstGroup.cloneNode(true);
+  newGroup.querySelectorAll('input').forEach(input => input.value = '');
+  newGroup.querySelectorAll('.variant-row').forEach((row, index) => {
+    if (index > 0) row.remove();
+  });
+  articleList.appendChild(newGroup);
+  bindArticleGroup(newGroup);
+  newGroup.querySelector('.article-code-input').focus();
+});
+
+form.addEventListener('submit', updateArticleSummary);
+
 form.addEventListener('submit', () => {
   statusBox.style.display='block';
   statusBox.textContent="Invio della richiesta in corso …";
@@ -455,6 +625,7 @@ document.getElementById('whatsappSend').addEventListener('click', () => {
   const refine = fieldValue('veredelung');
   const notes = fieldValue('notizen');
   const selectedFile = document.getElementById('attachment').files[0];
+  const articleDetails = updateArticleSummary();
   const typeName = "Tipo di richiesta";
   const contactName = "Preferenza di contatto";
   const type = checkedValues(typeName);
