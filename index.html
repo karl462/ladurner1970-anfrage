@@ -158,7 +158,7 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 <div><label for="vorname">Vorname *</label><input id="vorname" name="Vorname" required=""/></div>
 <div><label for="nachname">Nachname *</label><input id="nachname" name="Nachname" required=""/></div>
 <div><label for="firma">Firma / Verein</label><input id="firma" name="Firma / Verein"/></div>
-<div><label for="email">E-Mail</label><input id="email" name="email" placeholder="Für E-Mail-Versand erforderlich" type="email"/ required></div>
+<div><label for="email">E-Mail</label><input id="email" name="email" type="email" required placeholder="Für E-Mail-Versand erforderlich"></div>
 <div><label for="telefon">Telefon *</label><input id="telefon" name="Telefon" required="" type="tel"/></div>
 <div><label for="adresse">Adresse</label><input id="adresse" name="Adresse"/></div>
 </div>
@@ -258,6 +258,9 @@ function updateCatalogDetailVisibility() {
 
   document.querySelectorAll('.catalog-hide-field').forEach(field => {
     field.classList.toggle('is-hidden', hideCatalogDuplicateFields);
+    field.querySelectorAll('input, textarea, select').forEach(control => {
+      control.disabled = hideCatalogDuplicateFields;
+    });
   });
 }
 
@@ -277,7 +280,12 @@ const privacyInput = document.getElementById('datenschutz');
 
 function setRequestMode() {
   const selected = requestModeInputs.find(input => input.checked)?.value || '';
-  catalogSection.classList.toggle('is-hidden', selected !== 'Katalogartikel');
+  const showCatalog = selected === 'Katalogartikel';
+  catalogSection.classList.toggle('is-hidden', !showCatalog);
+  catalogSection.querySelectorAll('input, textarea, select, button').forEach(control => {
+    control.disabled = !showCatalog;
+  });
+  updateCatalogDetailVisibility();
 }
 requestModeInputs.forEach(input => input.addEventListener('change', setRequestMode));
 setRequestMode();
@@ -403,7 +411,7 @@ form.addEventListener('submit', (event) => {
 
 form.addEventListener('reset', () => {
   emailInput.setCustomValidity('');
-  setTimeout(setRequestMode, 0);
+  setTimeout(() => { setRequestMode(); updateCatalogDetailVisibility(); }, 0);
 });
 
 document.getElementById('whatsappSend').addEventListener('click', () => {
