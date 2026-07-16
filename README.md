@@ -108,3 +108,18 @@ FLEXIBLE ANFRAGE FINAL:
 - E-Mail ist nur beim Versand per E-Mail Pflicht.
 - WhatsApp-Versand funktioniert ohne E-Mail-Adresse.
 - Beschreibung der Anfrage bleibt Pflichtfeld.
+
+
+WHATSAPP FINAL FIX:
+- Eigene WhatsApp-Prüfung ohne Pflicht-E-Mail.
+- Nur Vorname, Nachname, Telefon, Art der Anfrage, Beschreibung und Datenschutz sind für WhatsApp erforderlich.
+- Artikelcode bleibt optional.
+- WhatsApp wird über api.whatsapp.com im selben Fenster geöffnet, um Popup-Blocker zu vermeiden.
+- Deutsch und Italienisch angepasst.
+
+
+PDF/DRUCK-FIX:
+- Schwarzer Kopfbereich und Footer werden im PDF mitgedruckt.
+- Weißes Logo bleibt sichtbar.
+- Druckfarben werden mit print-color-adjust erzwungen.
+- Seitenumbrüche in wichtigen Formularblöcken verbessert.
