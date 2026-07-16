@@ -156,7 +156,7 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 <div><label for="vorname">Vorname *</label><input id="vorname" name="Vorname" required=""/></div>
 <div><label for="nachname">Nachname *</label><input id="nachname" name="Nachname" required=""/></div>
 <div><label for="firma">Firma / Verein</label><input id="firma" name="Firma / Verein"/></div>
-<div><label for="email">E-Mail</label><input id="email" name="email" placeholder="Für Versand per E-Mail erforderlich" type="email"/></div>
+<div><label for="email">E-Mail</label><input id="email" name="email" placeholder="Für E-Mail-Versand erforderlich" type="email"/ required></div>
 <div><label for="telefon">Telefon *</label><input id="telefon" name="Telefon" required="" type="tel"/></div>
 <div><label for="adresse">Adresse</label><input id="adresse" name="Adresse"/></div>
 </div>
@@ -252,6 +252,11 @@ const requestModeInputs = [...document.querySelectorAll('input[name="Art der Anf
 const emailInput = document.getElementById('email');
 const privacyInput = document.getElementById('datenschutz');
 
+['input', 'change', 'blur'].forEach(eventName => {
+  emailInput.addEventListener(eventName, () => emailInput.setCustomValidity(''));
+});
+
+
 function setRequestMode() {
   const selected = requestModeInputs.find(input => input.checked)?.value || '';
   catalogSection.classList.toggle('is-hidden', selected !== 'Katalogartikel');
@@ -272,11 +277,6 @@ function validateCommonFields() {
 
 function validateEmailSubmission() {
   emailInput.setCustomValidity('');
-  if (!emailInput.value.trim()) {
-    emailInput.setCustomValidity('Bitte geben Sie für den E-Mail-Versand Ihre E-Mail-Adresse ein.');
-    emailInput.reportValidity();
-    return false;
-  }
   return validateCommonFields();
 }
 

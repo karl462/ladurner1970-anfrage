@@ -156,7 +156,7 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 <div><label for="vorname">Nome *</label><input id="vorname" name="Nome" required=""/></div>
 <div><label for="nachname">Cognome *</label><input id="nachname" name="Cognome" required=""/></div>
 <div><label for="firma">Azienda / Associazione</label><input id="firma" name="Azienda / Associazione"/></div>
-<div><label for="email">E-mail</label><input id="email" name="email" placeholder="Obbligatoria solo per l’invio tramite e-mail" type="email"/></div>
+<div><label for="email">E-mail</label><input id="email" name="email" placeholder="Obbligatoria per l’invio tramite e-mail" type="email"/ required></div>
 <div><label for="telefon">Telefono *</label><input id="telefon" name="Telefono" required="" type="tel"/></div>
 <div><label for="adresse">Indirizzo</label><input id="adresse" name="Indirizzo"/></div>
 </div>
@@ -252,6 +252,11 @@ const requestModeInputs = [...document.querySelectorAll('input[name="Tipo di ric
 const emailInput = document.getElementById('email');
 const privacyInput = document.getElementById('datenschutz');
 
+['input', 'change', 'blur'].forEach(eventName => {
+  emailInput.addEventListener(eventName, () => emailInput.setCustomValidity(''));
+});
+
+
 function setRequestMode() {
   const selected = requestModeInputs.find(input => input.checked)?.value || '';
   catalogSection.classList.toggle('is-hidden', selected !== 'Articolo da catalogo');
@@ -272,11 +277,6 @@ function validateCommonFields() {
 
 function validateEmailSubmission() {
   emailInput.setCustomValidity('');
-  if (!emailInput.value.trim()) {
-    emailInput.setCustomValidity('Per l’invio tramite e-mail inserisca il suo indirizzo e-mail.');
-    emailInput.reportValidity();
-    return false;
-  }
   return validateCommonFields();
 }
 

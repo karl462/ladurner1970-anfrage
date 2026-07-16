@@ -141,3 +141,10 @@ WHATSAPP- UND LAYOUT-FIX:
 - Für WhatsApp ist nur die Zustimmung zur Datenverarbeitung erforderlich.
 - Fehlende E-Mail, Artikelbeschreibung oder Artikelcode blockieren WhatsApp nicht mehr.
 - Mobile Kontaktbuttons stehen sauber untereinander.
+
+
+E-MAIL-FIX FÜR IPHONE:
+- Festhängende benutzerdefinierte E-Mail-Fehlermeldung entfernt.
+- E-Mail ist nur beim normalen E-Mail-Formularversand erforderlich.
+- WhatsApp bleibt ohne E-Mail-Adresse nutzbar.
+- Alte Fehlermeldungen werden bei Eingabe, Autofill, Änderung und Verlassen des Feldes gelöscht.
