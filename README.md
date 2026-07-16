@@ -67,3 +67,9 @@ PERFEKTE FINALVERSION – MEHRFACHUPLOAD:
 - Dateinamen und Dateigröße werden im Formular angezeigt.
 - Alle Dateien werden per E-Mail als Anhänge über Web3Forms Pro versendet.
 - WhatsApp enthält die Dateinamen; Dateien müssen dort manuell angehängt werden.
+
+FEHLERBEHEBUNG:
+- JavaScript-Zeilenumbrüche korrigiert.
+- „Farbe / Größe hinzufügen“ funktioniert.
+- „Weiteren Artikel hinzufügen“ funktioniert.
+- Strukturierte Artikeldaten werden in WhatsApp übernommen.

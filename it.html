@@ -565,13 +565,9 @@ function updateArticleSummary() {
       const qty = row.querySelector('.variant-qty-input').value.trim();
       return `  ${variantIndex + 1}. Colore: ${color || '-'} | Taglia: ${size || '-'} | Quantità: ${qty || '-'}`;
     });
-    return `Articolo ${articleIndex + 1}: ${code || '-'}
-` + variants.join('
-');
+    return `Articolo ${articleIndex + 1}: ${code || '-'}\n` + variants.join('\n');
   });
-  articleSummary.value = sections.join('
-
-');
+  articleSummary.value = sections.join('\n\n');
   return articleSummary.value;
 }
 
@@ -654,7 +650,6 @@ document.getElementById('whatsappSend').addEventListener('click', () => {
   const delivery = fieldValue('liefertermin');
   const budget = fieldValue('budget');
   const catalog = fieldValue('katalog');
-  const articleNo = fieldValue('artikelnummer');
   const catalogLink = fieldValue('kataloglink');
   const product = fieldValue('artikel');
   const colors = fieldValue('farben');
@@ -682,8 +677,10 @@ document.getElementById('whatsappSend').addEventListener('click', () => {
     labels.budget + ': ' + (budget || '-'),
     '',
     labels.catalog + ': ' + (catalog || '-'),
-    labels.articleNo + ': ' + (articleNo || '-'),
     labels.catalogLink + ': ' + (catalogLink || '-'),
+    '',
+    'Articoli / Colori / Taglie / Quantità:',
+    articleDetails || '-',
     '',
     labels.product + ':',
     product || '-',
