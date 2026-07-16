@@ -73,3 +73,10 @@ FEHLERBEHEBUNG:
 - „Farbe / Größe hinzufügen“ funktioniert.
 - „Weiteren Artikel hinzufügen“ funktioniert.
 - Strukturierte Artikeldaten werden in WhatsApp übernommen.
+
+LAYOUT-OPTIMIERUNG:
+- Produkt-/Kataloglink sauber auf volle Breite gesetzt.
+- Abstände vor Abschnitt 4 harmonisiert.
+- Details zur Anfrage als sauber getrennte Sektion formatiert.
+- Textfelder einheitlich vergrößert.
+- Überflüssiger Hilfetext unter der Artikelauswahl entfernt.

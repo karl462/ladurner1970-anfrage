@@ -257,7 +257,27 @@ textarea{min-height:112px;resize:vertical}
   line-height:1.5;
 }
 .catalog-link-row{
-  margin-top:22px;
+  margin-top:28px;
+  padding-top:4px;
+}
+.catalog-link-row label{
+  margin-bottom:8px;
+}
+.details-section{
+  margin-top:34px;
+  padding-top:4px;
+}
+.details-section .section-title{
+  margin-bottom:22px;
+}
+.details-section .grid{
+  gap:22px 24px;
+}
+.details-section textarea{
+  min-height:130px;
+}
+.details-section .full textarea{
+  min-height:150px;
 }
 @media(max-width:760px){
   .article-head{grid-template-columns:1fr}
@@ -457,14 +477,14 @@ footer a{color:#fff;text-decoration:none}
 </div>
   
   <input type="hidden" id="articleSummary" name="Articoli / Colori / Taglie / Quantità">
-  <div class="help">Per ogni articolo inserisca codice, colore, taglia e quantità.</div>
+  
 </div>
 </div>
 <div class="full"><label for="kataloglink">Link al prodotto o al catalogo</label><input id="kataloglink" name="Link al prodotto o al catalogo" type="url" placeholder="Facoltativo: link alla pagina del catalogo o al prodotto"></div>
 </div>
 </section>
 
-<section class="section">
+<section class="section details-section">
 <div class="section-title"><span class="number">4</span><h2>Dettagli della richiesta</h2><span class="line"></span></div>
 <div class="grid">
 <div><label for="artikel">Articolo / prodotto desiderato *</label><textarea id="artikel" name="Articolo / prodotto desiderato" required placeholder="Descriva il più precisamente possibile l'articolo desiderato."></textarea></div>
