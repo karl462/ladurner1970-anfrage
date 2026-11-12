@@ -123,7 +123,8 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 
 
 .catalog-hide-field.is-hidden{display:none!important}
-.choice-card:has(input:checked){border:2px solid #244c3e;background:#f0f5f2;padding:15px}.choice-card span{text-transform:none}.section-title h2{white-space:normal}.primary,.catalog-link{background:#244c3e;border-color:#244c3e}.lang a:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #9c451a;outline-offset:3px}</style>
+.choice-card:has(input:checked){border:2px solid #244c3e;background:#f0f5f2;padding:15px}.choice-card span{text-transform:none}.section-title h2{white-space:normal}.primary,.catalog-link{background:#244c3e;border-color:#244c3e}.lang a:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #9c451a;outline-offset:3px}.topbar{padding:48px 24px 20px}.topbar img{width:auto;max-width:65%;max-height:120px}.claim{margin-top:16px}@media(max-width:760px){.topbar img{max-height:90px}.topbar{padding-top:52px}}
+</style>
 </head>
 <body>
 <main class="page">
@@ -155,12 +156,12 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 <section class="section">
 <div class="section-title"><span class="number">1</span><h2>Kundendaten</h2><span class="line"></span></div>
 <div class="grid">
-<div><label for="vorname">Vorname *</label><input id="vorname" name="Vorname" required=""/></div>
-<div><label for="nachname">Nachname *</label><input id="nachname" name="Nachname" required=""/></div>
-<div><label for="firma">Firma / Verein</label><input id="firma" name="Firma / Verein"/></div>
-<div><label for="email">E-Mail</label><input id="email" name="email" type="email" required placeholder="Für E-Mail-Versand erforderlich"></div>
-<div><label for="telefon">Telefon *</label><input id="telefon" name="Telefon" required="" type="tel"/></div>
-<div><label for="adresse">Adresse</label><input id="adresse" name="Adresse"/></div>
+<div><label for="vorname">Vorname *</label><input autocomplete="given-name" id="vorname" name="Vorname" required=""/></div>
+<div><label for="nachname">Nachname *</label><input autocomplete="family-name" id="nachname" name="Nachname" required=""/></div>
+<div><label for="firma">Firma / Verein</label><input autocomplete="organization" id="firma" name="Firma / Verein"/></div>
+<div><label for="email">E-Mail</label><input autocomplete="email" id="email" name="email" type="email" required placeholder="Für E-Mail-Versand erforderlich"></div>
+<div><label for="telefon">Telefon *</label><input autocomplete="tel" id="telefon" name="Telefon" required="" type="tel"/></div>
+<div><label for="adresse">Adresse</label><input autocomplete="street-address" id="adresse" name="Adresse"/></div>
 </div>
 </section>
 <section class="section">
@@ -181,7 +182,7 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 <div class="catalog-box"><p>Öffnen Sie unsere Katalogübersicht, wählen Sie den gewünschten Katalog und tragen Sie – falls bekannt – Artikelcode, Farbe, Größe und Menge ein.</p><a class="catalog-link" href="https://www.ladurner1970.com/pages/kataloge-2026" rel="noopener" target="_blank">Kataloge ansehen</a></div>
 <div class="grid">
 <div><label for="katalog">Katalog / Marke</label><input id="katalog" name="Katalog / Marke" placeholder="z. B. Arbeitsbekleidung, Textilien, Werbeartikel"/></div>
-<div class="full"><label>Artikel mit Farben, Größen und Mengen</label><div class="article-list" id="articleList"><div class="article-group"><div class="article-head"><div><label>Artikelcode</label><input class="article-code-input" placeholder="z. B. JN001" type="text"/></div><button aria-label="Artikel entfernen" class="remove-article" type="button">×</button></div><div class="variant-list"><div class="variant-row"><div><label>Farbe</label><input class="variant-color-input" placeholder="z. B. Schwarz" type="text"/></div><div><label>Größe</label><input class="variant-size-input" placeholder="z. B. M" type="text"/></div><div><label>Menge</label><input class="variant-qty-input" min="1" placeholder="10" type="number"/></div><button aria-label="Variante entfernen" class="remove-variant" type="button">×</button></div></div><button class="secondary add-variant" type="button">+ Farbe / Größe hinzufügen</button></div></div><button class="secondary add-article" id="addArticle" type="button">+ Weiteren Artikel hinzufügen</button><input id="articleSummary" name="Artikel / Farben / Größen / Mengen" type="hidden"/><div class="article-help">Falls bekannt, den Artikelcode einmal eingeben. Farbe, Größe und Menge können ergänzt werden. Ohne Artikelcode beschreiben Sie Ihren Wunsch einfach im nächsten Abschnitt.</div></div>
+<div class="full"><label>Artikel mit Farben, Größen und Mengen</label><div class="article-list" id="articleList"><div class="article-group"><div class="article-head"><div><label>Artikelcode</label><input aria-label="Artikelcode" class="article-code-input" placeholder="z. B. JN001" type="text"/></div><button aria-label="Artikel entfernen" class="remove-article" type="button">×</button></div><div class="variant-list"><div class="variant-row"><div><label>Farbe</label><input aria-label="Farbe" class="variant-color-input" placeholder="z. B. Schwarz" type="text"/></div><div><label>Größe</label><input aria-label="Größe" class="variant-size-input" placeholder="z. B. M" type="text"/></div><div><label>Menge</label><input aria-label="Menge" class="variant-qty-input" min="1" placeholder="10" type="number"/></div><button aria-label="Variante entfernen" class="remove-variant" type="button">×</button></div></div><button class="secondary add-variant" type="button">+ Farbe / Größe hinzufügen</button></div></div><button class="secondary add-article" id="addArticle" type="button">+ Weiteren Artikel hinzufügen</button><input id="articleSummary" name="Artikel / Farben / Größen / Mengen" type="hidden"/><div class="article-help">Falls bekannt, den Artikelcode einmal eingeben. Farbe, Größe und Menge können ergänzt werden. Ohne Artikelcode beschreiben Sie Ihren Wunsch einfach im nächsten Abschnitt.</div></div>
 <div class="full catalog-link-row"><label for="kataloglink">Produkt- oder Kataloglink</label><input id="kataloglink" name="Produkt- oder Kataloglink" placeholder="Optional: Link zur Katalogseite oder zum Produkt" type="url"/></div>
 </div></section>
 <section class="section details-section">
