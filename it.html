@@ -123,7 +123,8 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 
 
 .catalog-hide-field.is-hidden{display:none!important}
-.choice-card:has(input:checked){border:2px solid #244c3e;background:#f0f5f2;padding:15px}.choice-card span{text-transform:none}.section-title h2{white-space:normal}.primary,.catalog-link{background:#244c3e;border-color:#244c3e}.lang a:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #9c451a;outline-offset:3px}</style>
+.choice-card:has(input:checked){border:2px solid #244c3e;background:#f0f5f2;padding:15px}.choice-card span{text-transform:none}.section-title h2{white-space:normal}.primary,.catalog-link{background:#244c3e;border-color:#244c3e}.lang a:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #9c451a;outline-offset:3px}.topbar{padding:48px 24px 20px}.topbar img{width:auto;max-width:65%;max-height:120px}.claim{margin-top:16px}@media(max-width:760px){.topbar img{max-height:90px}.topbar{padding-top:52px}}
+</style>
 </head>
 <body>
 <main class="page">
@@ -155,12 +156,12 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 <section class="section">
 <div class="section-title"><span class="number">1</span><h2>Dati del cliente</h2><span class="line"></span></div>
 <div class="grid">
-<div><label for="vorname">Nome *</label><input id="vorname" name="Nome" required=""/></div>
-<div><label for="nachname">Cognome *</label><input id="nachname" name="Cognome" required=""/></div>
-<div><label for="firma">Azienda / Associazione</label><input id="firma" name="Azienda / Associazione"/></div>
-<div><label for="email">E-mail</label><input id="email" name="email" type="email" required placeholder="Obbligatoria per l’invio tramite e-mail"></div>
-<div><label for="telefon">Telefono *</label><input id="telefon" name="Telefono" required="" type="tel"/></div>
-<div><label for="adresse">Indirizzo</label><input id="adresse" name="Indirizzo"/></div>
+<div><label for="vorname">Nome *</label><input autocomplete="given-name" id="vorname" name="Nome" required=""/></div>
+<div><label for="nachname">Cognome *</label><input autocomplete="family-name" id="nachname" name="Cognome" required=""/></div>
+<div><label for="firma">Azienda / Associazione</label><input autocomplete="organization" id="firma" name="Azienda / Associazione"/></div>
+<div><label for="email">E-mail</label><input autocomplete="email" id="email" name="email" type="email" required placeholder="Obbligatoria per l’invio tramite e-mail"></div>
+<div><label for="telefon">Telefono *</label><input autocomplete="tel" id="telefon" name="Telefono" required="" type="tel"/></div>
+<div><label for="adresse">Indirizzo</label><input autocomplete="street-address" id="adresse" name="Indirizzo"/></div>
 </div>
 </section>
 <section class="section">
@@ -181,7 +182,7 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 <div class="catalog-box"><p>Apra la nostra panoramica dei cataloghi, scelga il catalogo desiderato e indichi, se conosciuti, codice articolo, colore, taglia e quantità.</p><a class="catalog-link" href="https://www.ladurner1970.com/it/pages/kataloge-2026" rel="noopener" target="_blank">Visualizza i cataloghi</a></div>
 <div class="grid">
 <div><label for="katalog">Catalogo / Marchio</label><input id="katalog" name="Catalogo / Marchio" placeholder="ad es. abbigliamento da lavoro, tessili, articoli promozionali"/></div>
-<div class="full"><label>Articoli con colori, taglie e quantità</label><div class="article-list" id="articleList"><div class="article-group"><div class="article-head"><div><label>Codice articolo</label><input class="article-code-input" placeholder="ad es. JN001" type="text"/></div><button aria-label="Rimuovi articolo" class="remove-article" type="button">×</button></div><div class="variant-list"><div class="variant-row"><div><label>Colore</label><input class="variant-color-input" placeholder="ad es. Nero" type="text"/></div><div><label>Taglia</label><input class="variant-size-input" placeholder="ad es. M" type="text"/></div><div><label>Quantità</label><input class="variant-qty-input" min="1" placeholder="10" type="number"/></div><button aria-label="Rimuovi variante" class="remove-variant" type="button">×</button></div></div><button class="secondary add-variant" type="button">+ Aggiungi colore / taglia</button></div></div><button class="secondary add-article" id="addArticle" type="button">+ Aggiungi un altro articolo</button><input id="articleSummary" name="Articoli / Colori / Taglie / Quantità" type="hidden"/><div class="article-help">Se conosciuto, inserisca il codice articolo una sola volta. Può aggiungere colore, taglia e quantità. Senza codice descriva semplicemente la richiesta nella sezione successiva.</div></div>
+<div class="full"><label>Articoli con colori, taglie e quantità</label><div class="article-list" id="articleList"><div class="article-group"><div class="article-head"><div><label>Codice articolo</label><input aria-label="Codice articolo" class="article-code-input" placeholder="ad es. JN001" type="text"/></div><button aria-label="Rimuovi articolo" class="remove-article" type="button">×</button></div><div class="variant-list"><div class="variant-row"><div><label>Colore</label><input aria-label="Colore" class="variant-color-input" placeholder="ad es. Nero" type="text"/></div><div><label>Taglia</label><input aria-label="Taglia" class="variant-size-input" placeholder="ad es. M" type="text"/></div><div><label>Quantità</label><input aria-label="Quantità" class="variant-qty-input" min="1" placeholder="10" type="number"/></div><button aria-label="Rimuovi variante" class="remove-variant" type="button">×</button></div></div><button class="secondary add-variant" type="button">+ Aggiungi colore / taglia</button></div></div><button class="secondary add-article" id="addArticle" type="button">+ Aggiungi un altro articolo</button><input id="articleSummary" name="Articoli / Colori / Taglie / Quantità" type="hidden"/><div class="article-help">Se conosciuto, inserisca il codice articolo una sola volta. Può aggiungere colore, taglia e quantità. Senza codice descriva semplicemente la richiesta nella sezione successiva.</div></div>
 <div class="full catalog-link-row"><label for="kataloglink">Link al prodotto o al catalogo</label><input id="kataloglink" name="Link al prodotto o al catalogo" placeholder="Opzionale: link alla pagina del catalogo o al prodotto" type="url"/></div>
 </div></section>
 <section class="section details-section">
