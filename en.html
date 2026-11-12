@@ -123,7 +123,8 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 
 
 .catalog-hide-field.is-hidden{display:none!important}
-.choice-card:has(input:checked){border:2px solid #244c3e;background:#f0f5f2;padding:15px}.choice-card span{text-transform:none}.section-title h2{white-space:normal}.primary,.catalog-link{background:#244c3e;border-color:#244c3e}.lang a:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #9c451a;outline-offset:3px}</style>
+.choice-card:has(input:checked){border:2px solid #244c3e;background:#f0f5f2;padding:15px}.choice-card span{text-transform:none}.section-title h2{white-space:normal}.primary,.catalog-link{background:#244c3e;border-color:#244c3e}.lang a:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #9c451a;outline-offset:3px}.topbar{padding:48px 24px 20px}.topbar img{width:auto;max-width:65%;max-height:120px}.claim{margin-top:16px}@media(max-width:760px){.topbar img{max-height:90px}.topbar{padding-top:52px}}
+</style>
 </head>
 <body>
 <main class="page">
@@ -156,12 +157,12 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 <section class="section">
 <div class="section-title"><span class="number">1</span><h2>Your details</h2><span class="line"></span></div>
 <div class="grid">
-<div><label for="vorname">First name *</label><input id="vorname" name="First name" required=""/></div>
-<div><label for="nachname">Last name *</label><input id="nachname" name="Last name" required=""/></div>
-<div><label for="firma">Company / Club</label><input id="firma" name="Company / Club"/></div>
-<div><label for="email">E-Mail</label><input id="email" name="email" type="email" required placeholder="Required for email submission"></div>
-<div><label for="telefon">Phone *</label><input id="telefon" name="Phone" required="" type="tel"/></div>
-<div><label for="adresse">Address</label><input id="adresse" name="Address"/></div>
+<div><label for="vorname">First name *</label><input autocomplete="given-name" id="vorname" name="First name" required=""/></div>
+<div><label for="nachname">Last name *</label><input autocomplete="family-name" id="nachname" name="Last name" required=""/></div>
+<div><label for="firma">Company / Club</label><input autocomplete="organization" id="firma" name="Company / Club"/></div>
+<div><label for="email">E-Mail</label><input autocomplete="email" id="email" name="email" type="email" required placeholder="Required for email submission"></div>
+<div><label for="telefon">Phone *</label><input autocomplete="tel" id="telefon" name="Phone" required="" type="tel"/></div>
+<div><label for="adresse">Address</label><input autocomplete="street-address" id="adresse" name="Address"/></div>
 </div>
 </section>
 <section class="section">
@@ -182,7 +183,7 @@ footer{background:#000;color:#fff;padding:24px 35px;display:flex;justify-content
 <div class="catalog-box"><p>Open our catalogue overview, choose a catalogue and enter the product code, colour, size and quantity, if known.</p><a class="catalog-link" href="https://www.ladurner1970.com/pages/kataloge-2026" rel="noopener" target="_blank">View catalogues</a></div>
 <div class="grid">
 <div><label for="katalog">Catalogue / Brand</label><input id="katalog" name="Catalogue / Brand" placeholder="e.g. Workwear, Textiles, Promotional products"/></div>
-<div class="full"><label>Products with colours, sizes and quantities</label><div class="article-list" id="articleList"><div class="article-group"><div class="article-head"><div><label>Product code</label><input class="article-code-input" placeholder="e.g. JN001" type="text"/></div><button aria-label="Remove product" class="remove-article" type="button">×</button></div><div class="variant-list"><div class="variant-row"><div><label>Colour</label><input class="variant-color-input" placeholder="e.g. Black" type="text"/></div><div><label>Size</label><input class="variant-size-input" placeholder="e.g. M" type="text"/></div><div><label>Quantity</label><input class="variant-qty-input" min="1" placeholder="10" type="number"/></div><button aria-label="Remove variant" class="remove-variant" type="button">×</button></div></div><button class="secondary add-variant" type="button">+ Add colour / size</button></div></div><button class="secondary add-article" id="addArticle" type="button">+ Add another product</button><input id="articleSummary" name="Products / Colours / Sizes / Quantities" type="hidden"/><div class="article-help">Enter the product code once, if known, then add colours, sizes and quantities. If you do not have a code, describe your requirements in the next section.</div></div>
+<div class="full"><label>Products with colours, sizes and quantities</label><div class="article-list" id="articleList"><div class="article-group"><div class="article-head"><div><label>Product code</label><input aria-label="Product code" class="article-code-input" placeholder="e.g. JN001" type="text"/></div><button aria-label="Remove product" class="remove-article" type="button">×</button></div><div class="variant-list"><div class="variant-row"><div><label>Colour</label><input aria-label="Colour" class="variant-color-input" placeholder="e.g. Black" type="text"/></div><div><label>Size</label><input aria-label="Size" class="variant-size-input" placeholder="e.g. M" type="text"/></div><div><label>Quantity</label><input aria-label="Quantity" class="variant-qty-input" min="1" placeholder="10" type="number"/></div><button aria-label="Remove variant" class="remove-variant" type="button">×</button></div></div><button class="secondary add-variant" type="button">+ Add colour / size</button></div></div><button class="secondary add-article" id="addArticle" type="button">+ Add another product</button><input id="articleSummary" name="Products / Colours / Sizes / Quantities" type="hidden"/><div class="article-help">Enter the product code once, if known, then add colours, sizes and quantities. If you do not have a code, describe your requirements in the next section.</div></div>
 <div class="full catalog-link-row"><label for="kataloglink">Product or catalogue link</label><input id="kataloglink" name="Product or catalogue link" placeholder="Optional: link to the catalogue page or product" type="url"/></div>
 </div></section>
 <section class="section details-section">
