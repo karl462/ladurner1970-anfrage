@@ -515,20 +515,21 @@ articleList.addEventListener('input',()=>detailInput.setCustomValidity(''));
 // Email-only requirement is enabled before native submit validation.
 form.querySelector('button[type="submit"]').addEventListener('click',()=>{emailInput.required=true;});
 emailInput.required=false;
-form.addEventListener('reset',()=>setTimeout(()=>{
+form.addEventListener('reset',()=>queueMicrotask(()=>{
  [...articleList.querySelectorAll('.article-group')].slice(1).forEach(el=>el.remove());
  const first=articleList.querySelector('.article-group');
  [...first.querySelectorAll('.variant-row')].slice(1).forEach(el=>el.remove());
  first.querySelectorAll('input').forEach(el=>el.value='');
  detailInput.setCustomValidity('');emailInput.required=false;
  statusBox.style.display='none';statusBox.textContent='';setRequestMode();updateArticleSummary();
-},0));
+}));
 const catalogContext = new URLSearchParams(location.search).get('catalog');
 if(catalogContext){
  requestModeInputs[0].checked=true;
  document.getElementById('katalog').value=catalogContext.slice(0,120);
  document.querySelectorAll('.lang a').forEach(a=>{const url=new URL(a.href);url.searchParams.set('catalog',catalogContext.slice(0,120));a.href=url.href;});
 }
+requestModeInputs.forEach(input=>input.addEventListener('change',()=>setRequestMode()));
 setRequestMode();
 </script>
 </body>
